@@ -1,0 +1,124 @@
+%\tikzexternalenable
+\begin{tikzpicture}
+    \begin{groupplot}[
+            group style={
+                group size=1 by 1,
+            },
+            % size
+            width=0.6\textwidth,
+            % y
+            ylabel={$\left\langle \Performance \right\rangle / \SwimmingVelocity$},
+            y label style={yshift=-4pt},
+            ymin=0.0,
+            ymax=2.5,
+            % x
+            x label style={yshift=4pt},
+            xmin=0.0,
+            % layers
+            set layers,
+            % legend
+            legend style={draw=none, fill=none},
+            legend cell align=left,
+        ]
+    \nextgroupplot[
+        %width=0.33\linewidth,
+        % x
+        extra y ticks={0.5, 1.5, 2.5},
+        xlabel=$\ReorientationTime / \KolmogorovTimeScale$,
+        xmax=4,
+        % legend
+        legend pos=north east,
+        legend style={fill opacity=0.5, text opacity=1},
+    ]
+        % shade
+        \addplot[name path=A, draw=none, forget plot] table [
+            x index=4, 
+            y expr={(\thisrowno{0} - \thisrowno{1}) / 0.066},
+            col sep=comma, 
+            comment chars=\#,
+        ]{parts/turbulence/data/jhtdb_reorientation_time/max.csv};
+        \addplot[name path=B, draw=none, forget plot] table [
+            x index=4, 
+            y expr={(\thisrowno{0} + \thisrowno{1}) / 0.066},
+            col sep=comma,
+            comment chars=\#,
+        ]{parts/turbulence/data/jhtdb_reorientation_time/max.csv};
+        \addplot[ColorSurf, opacity=0.4, forget plot, visible on=<1->] fill between[of=A and B];
+        \addplot[name path=A, draw=none, forget plot] table [
+            x index=4, 
+            y expr={(\thisrowno{0} - \thisrowno{1}) / 0.066},
+            col sep=comma, 
+            comment chars=\#,
+            restrict expr to domain={\thisrowno{3}}{0.0:0.0},
+        ]{parts/turbulence/data/jhtdb_reorientation_time/merge.csv};
+        \addplot[name path=B, draw=none, forget plot] table [
+            x index=4, 
+            y expr={(\thisrowno{0} + \thisrowno{1}) / 0.066},
+            col sep=comma,
+            comment chars=\#,
+            restrict expr to domain={\thisrowno{3}}{0.0:0.0},
+        ]{parts/turbulence/data/jhtdb_reorientation_time/merge.csv};
+        \addplot[ColorBh, opacity=0.4, forget plot, visible on=<1->] fill between[of=A and B];
+        % plot
+        \addplot
+        [
+        color=ColorSurf,
+        opacity=1.0,
+        line width=1pt, 
+        only marks,%solid,
+        mark=square*,
+        visible on=<1->,
+        ]
+        table[
+            x index=4, 
+            y expr={\thisrowno{0} / 0.066},
+            col sep=comma, 
+            comment chars=\#,
+            unbounded coords=discard,
+        ]{parts/turbulence/data/jhtdb_reorientation_time/max.csv};
+        \addlegendentry{\NameSurf}
+        %\addplot
+        %[
+        %color=pink!50!black,
+        %opacity=1.0,
+        %line width=1pt, 
+        %dashed,
+        %]
+        %table[
+        %    x index=4, 
+        %    y expr={1.0},
+        %    col sep=comma, 
+        %    comment chars=\#,
+        %    restrict expr to domain={\thisrowno{3}}{0.0:0.0},
+        %    unbounded coords=discard,
+        %]{parts/turbulence/data/jhtdb_reorientation_time/final_merge.csv};
+        %\addlegendentry{\NameBh}
+        \addplot
+        [
+        color=ColorBh,
+        opacity=1.0,
+        line width=1pt, 
+        only marks,%solid,
+        mark=o,
+        visible on=<1->,
+        ]
+        table[
+            x index=4, 
+            y expr={\thisrowno{0} / 0.066},
+            col sep=comma, 
+            comment chars=\#,
+            restrict expr to domain={\thisrowno{3}}{0.0:0.0},
+            unbounded coords=discard,
+        ]{parts/turbulence/data/jhtdb_reorientation_time/merge.csv};
+        \addlegendentry{bottom-heavy}
+        \addplot
+        [
+        color=white,
+        opacity=1.0,
+        solid, 
+        on layer=axis background,
+        domain=0.0:4,
+        ]{1};
+    \end{groupplot}
+\end{tikzpicture}
+%\tikzexternaldisable

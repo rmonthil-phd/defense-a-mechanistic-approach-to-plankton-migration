@@ -1,0 +1,347 @@
+%-------------------------------------------------------
+% CONCLUSION: 
+%-------------------------------------------------------
+
+\begin{frame}{6 Summary and \textbf{perspectives}}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 5 Relevance}
+	\centering
+	\vspace{15pt}
+	\textbf{\Large Outline}
+
+	\vspace{15pt}
+
+	\large
+	\begin{enumerate}
+		\setlength\itemsep{10pt}
+		\item \textcolor{gray}{\textbf{Introduction} to the world of plankton}
+		\item \textcolor{gray}{Formulation of the \textbf{navigation problem}}
+		\item \textcolor{gray}{Solution: The \textbf{surfing} strategy}
+		\item \textcolor{gray}{Evaluation of surfing \textbf{performance}}
+		\item \textcolor{gray}{Biophysical \textbf{relevance} of the strategy}
+		\item \textcolor{white}{Summary and \textbf{perspectives}}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{6 Summary and \textbf{perspectives}}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 5 Relevance}
+	\centering
+	\vspace{5pt}
+	\textbf{\Large Summary}
+
+	\vspace{10pt}
+	\centering
+	\begin{itemize}
+		\setlength\itemsep{2pt}
+		\item<1-> Formalized the \textbf{navigation problem} of plankton \textbf{vertical migration}
+		\item<2-> We derived an \textbf{approximate analytical solution}
+		\item<3-> We demonstrated its \textbf{performance in turbulence}
+		\item<4-> We demonstrated its \textbf{relevance} for actual plankters in their habitat
+	\end{itemize}
+
+	\vspace{40pt}
+	\begin{tikzpicture}
+		\node<1>[inner sep=0pt] (copepod) at (0,0) {
+			\def\svgwidth{0.9\textwidth}
+			\input{parts/upscaling/summary_0.pdf_tex}
+		};
+		\node<2>[inner sep=0pt] (copepod) at (0,0) {
+			\def\svgwidth{0.9\textwidth}
+			\input{parts/upscaling/summary_1.pdf_tex}
+		};
+		\node<3>[inner sep=0pt] (copepod) at (0,0) {
+			\def\svgwidth{0.9\textwidth}
+			\input{parts/upscaling/summary_2.pdf_tex}
+		};
+		\node<4->[inner sep=0pt] (copepod) at (0,0) {
+			\def\svgwidth{0.9\textwidth}
+			\input{parts/upscaling/summary_3.pdf_tex}
+		};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{6 Summary and \textbf{perspectives}}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 5 Relevance}
+	\centering
+	\vspace{-10pt}
+	\small
+	\begin{multicols}{2}
+		\begin{itemize}
+			%\setlength\itemsep{2pt}
+			\item \textcolor{ColorSurf}{Plankton}
+				\begin{itemize}
+					\scriptsize
+					\item[$\bullet$] \textcolor{ColorSurf}{What are plankton}
+					\item[$\bullet$] \textcolor{ColorSurf}{Role in marine food web}
+					\item<2->[$\bullet$] Threat of climate change for plankton
+					\item<2->[$\bullet$] Biological pump
+				\end{itemize}
+			\item \textcolor{ColorSurf}{Plankton navigation problem}
+				\begin{itemize}
+					\scriptsize
+					\item[$\bullet$] \textcolor{ColorSurf}{Vertical migration}
+					\item<2->[$\bullet$] Horizontal dispersion
+					\item<2->[$\bullet$] Odor and light tracking
+				\end{itemize}
+			\item \textcolor{ColorSurf}{Surfing strategy}
+				\begin{itemize}
+					\scriptsize
+					\item[$\bullet$] \textcolor{ColorSurf}{Derivation}
+					\item<2->[$\bullet$] Characterisation in linear flows
+					\item[$\bullet$] \textcolor{ColorSurf}{Taylor-Green illustration}
+					\item<2->[$\bullet$] Surfing in a Poiseuille flow
+				\end{itemize}
+			\item \textcolor{ColorSurf}{Surfing on turbulence}
+				\begin{itemize}
+					\scriptsize
+					\item[$\bullet$] \textcolor{ColorSurf}{Performance}
+					\item<2->[$\bullet$] Flow sampled by surfers
+					\item<2->[$\bullet$] Influence of $\mathit{Re}_{\lambda}$
+					\item<2->[$\bullet$] Estimation of performance
+				\end{itemize}
+			\item \textcolor{ColorSurf}{Robustness}
+				\begin{itemize}
+					\scriptsize
+					\item[$\bullet$] \textcolor{ColorSurf}{Reorientation time}
+					\item<2->[$\bullet$] Turbulence fluctuations
+					\item<2->[$\bullet$] Noise
+					\item<2->[$\bullet$] Filtering
+					\item<2->[$\bullet$] Partial measure
+					\item<2->[$\bullet$] Processing power
+				\end{itemize}
+			\item<2-> Other navigation approaches
+				\begin{itemize}
+					\scriptsize
+					\item<2->[$\bullet$] Zermelo equation
+					\item<2->[$\bullet$] Dijkstra algorithm
+					\item<2->[$\bullet$] Reinforcement learning
+				\end{itemize}
+			\item \textcolor{ColorSurf}{Biophysical relevance}
+				\begin{itemize}
+					\scriptsize
+					\item[$\bullet$] \textcolor{ColorSurf}{Demonstration of relevance}
+					\item<2->[$\bullet$] Optimality in marine ecology
+				\end{itemize}
+			\item<2-> Additional motion dynamics
+			\item<2-> Horizontal dispersion problem
+			\item<2-> Energey efficient navigation
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{6 Summary and \textbf{perspectives}}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 5 Relevance}
+	\centering
+	\vspace{4pt}
+	\textbf{\Large Perspectives}
+
+	\pause
+	\vspace{2pt}
+	\centering
+	\begin{itemize}
+		\setlength\itemsep{10pt}
+		\item<1-> \textbf{Generalization}
+			\begin{align*}
+				\ControlDirectionOpt^* = \frac{\ControlDirectionOptNN^*}{\norm{\ControlDirectionOptNN^*}}, \quad \text{with} \quad \ControlDirectionOptNN^* &= \exp \left[ \TimeHorizon (\Gradients)^\top + \frac{\TimeHorizon^{2}}{2} \frac{d (\Gradients)^\top}{dt} + \cdots \right] \cdot \Direction \\
+				 &= \exp \left[ \sum_{k=0}^\infty \frac{\TimeHorizon^{k+1}}{(k+1)!} \frac{d^k (\Gradients)^\top}{dt^k} \right] \cdot \Direction
+			\end{align*}
+		\item<1-> \st{Approximate} \textbf{Actual optimal solution}
+		\item<1-> $\ControlDirectionOpt$ is a first order approximation of $\ControlDirectionOpt^*$
+		\item<1-> function of \textbf{local information} contrary to the Zermelo equation or the Dijkstra algorithm $\to$ animal navigation
+		\item<1-> \textbf{Positional target:} $\Direction(t)$ \quad $\Direction \to \Direction(\TimeHorizon) \approx \Direction_0 + \TimeHorizon (\partial \Direction/ \partial t)_0 + \cdots$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{6 Summary and \textbf{perspectives}}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 5 Relevance}
+	\centering
+	\vspace{5pt}
+	\textbf{\Large Perspectives}
+
+	\vspace{15pt}
+	\centering
+	\leavevmode\hidewidth\begin{tikzpicture}
+		\node[inner sep=0pt] (copepod) at (0,0) {
+			\def\svgwidth{1.0\textwidth}
+			\input{parts/upscaling/perspectives.pdf_tex}
+		};
+	\end{tikzpicture}\hidewidth\null
+
+	\vspace{0pt}
+	\centering
+	\begin{multicols}{2}
+		\begin{itemize}
+			\scriptsize
+			\setlength\itemsep{2pt}
+			\item \textbf{Sheld0n:} https://github.com/C0PEP0D/sheld0n
+			\item \textbf{Thesis:} https://github.com/rmonthil-phd
+			\item \textbf{Defense:} https://github.com/rmonthil-phd
+			\item \textbf{Video-game:} https://akarius.itch.io/floward
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+%-------------------------------------------------------
+% MORE: 
+%-------------------------------------------------------
+
+\begin{frame}[noframenumbering]{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\textbf{\Large Definition of the gradient}
+
+	\Large
+	\begin{center}
+		\begin{equation*}
+			\Gradients = \begin{pmatrix}
+				\displaystyle \frac{\partial \FlowVelocityScalar_x}{\partial x} & \displaystyle \frac{\partial \FlowVelocityScalar_x}{\partial y} & \displaystyle \frac{\partial \FlowVelocityScalar_x}{\partial z} \\[20pt]
+				\displaystyle \frac{\partial \FlowVelocityScalar_y}{\partial x} & \displaystyle \frac{\partial \FlowVelocityScalar_y}{\partial y} & \displaystyle \frac{\partial \FlowVelocityScalar_y}{\partial z} \\[20pt]
+				\displaystyle \frac{\partial \FlowVelocityScalar_z}{\partial x} & \displaystyle \frac{\partial \FlowVelocityScalar_z}{\partial y} & \displaystyle \frac{\partial \FlowVelocityScalar_z}{\partial z}
+			\end{pmatrix}
+		\end{equation*}
+	\end{center}
+\end{frame}
+
+%-------------------------------------------------------
+% SURFING STRATEGY: INTERPRETATION
+%-------------------------------------------------------
+
+\begin{frame}[noframenumbering]{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\textbf{\Large Physical interpretation of \textit{surfing}}
+	\begin{equation*}
+		\ControlDirectionOpt = \frac{\ControlDirectionOptNN}{\norm{\ControlDirectionOptNN}}, \quad \text{with} \quad
+		\ControlDirectionOptNN = \Direction + \TimeHorizon \, \vec{\nabla} \FlowVelocityScalar_z + \frac{1}{2} \TimeHorizon^2 \, \vec{\nabla} ( \FlowVelocity \cdot \vec{\nabla} \FlowVelocityScalar_\DirectionScalar ) + \dotsb
+	\end{equation*}
+
+	\begin{figure}
+		\begin{tikzpicture}
+			\node[inner sep=0pt] (copepod) at (0,0) {
+				\def\svgwidth{0.3\textwidth}
+				\input{parts/surf/schemes/physical_interpretation_3.pdf_tex}
+			};
+		\end{tikzpicture}
+		\captionsetup{skip=10pt}
+		\caption{
+			Illustration of the surfing strategy in a simple vortex flow.
+		}
+	\end{figure}
+
+	\vskip0pt plus 1filll
+
+	\large
+	\begin{itemize}
+		\item<1-> succession of \textbf{``gradient ascents''} controlled by $\TimeHorizon$
+	\end{itemize}
+	\vspace{15pt}
+\end{frame}
+
+% %-------------------------------------------------------
+% % SURFING STRATEGY: INTERPRETATION
+% %-------------------------------------------------------
+% 
+% \begin{frame}[noframenumbering]{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Performance - 5 Relevance - 6 Perspectives}
+	% \centering
+	% \textbf{\Large Physical interpretation of \textit{surfing}}
+	% \only<1>{
+		% \begin{equation*}
+			% \ControlDirection = \frac{\ControlDirectionOptNN}{\norm{\ControlDirectionOptNN}}, \quad \text{with} \quad \ControlDirectionOptNN = \exp \left[ \TimeHorizon (\Gradients)^\top \right] \, \Direction
+		% \end{equation*}
+	% }
+	% % \only<2>{
+		% % \begin{equation*}
+			% % \ControlDirectionOpt = \frac{\ControlDirectionOptNN}{\norm{\ControlDirectionOptNN}}, \quad \text{with} \quad
+			% % \ControlDirectionOptNN = \sum_{k = 0}^{\infty} \frac{\TimeHorizon^k}{k!}  \left[ (\Gradients)^\top \right]^k \cdot \Direction
+		% % \end{equation*}
+	% % }
+	% % \only<4>{
+		% % \begin{equation*}
+			% % \ControlDirectionOpt = \frac{\ControlDirectionOptNN}{\norm{\ControlDirectionOptNN}}, \quad \text{with} \quad
+			% % \ControlDirectionOptNN = \Direction + \TimeHorizon \, (\Gradients)^\top \cdot \Direction + \frac{1}{2} \TimeHorizon^2 [ (\Gradients)^\top ]^2 \cdot \Direction + \dotsb
+		% % \end{equation*}
+	% % }
+	% \only<2->{
+		% \begin{equation*}
+			% \ControlDirectionOpt = \frac{\ControlDirectionOptNN}{\norm{\ControlDirectionOptNN}}, \quad \text{with} \quad
+			% \ControlDirectionOptNN = \alt<3>{\textcolor{ColorSurf}{\Direction}}{\Direction} + \TimeHorizon \, \alt<4>{\textcolor{ColorSurf}{\vec{\nabla} \FlowVelocityScalar_z}}{\vec{\nabla} \FlowVelocityScalar_z} + \frac{1}{2} \TimeHorizon^2 \, \alt<6->{\textcolor{ColorSurf}{\vec{\nabla} ( \FlowVelocity \cdot \vec{\nabla} \FlowVelocityScalar_\DirectionScalar )}}{\vec{\nabla} ( \FlowVelocity \cdot \vec{\nabla} \FlowVelocityScalar_\DirectionScalar )} + \dotsb
+		% \end{equation*}
+	% }
+% 
+	% \visible<2->{
+		% \begin{figure}
+			% \begin{tikzpicture}
+				% \visible<2>{
+					% \node[inner sep=0pt] (copepod) at (0,0) {
+						% \def\svgwidth{0.3\textwidth}
+						% \input{parts/surf/schemes/physical_interpretation_0.pdf_tex}
+					% };
+				% }
+				% \visible<3>{
+					% \node[inner sep=0pt] (copepod) at (0,0) {
+						% \def\svgwidth{0.3\textwidth}
+						% \input{parts/surf/schemes/physical_interpretation_1.pdf_tex}
+					% };
+				% }
+				% \visible<4>{
+					% \node[inner sep=0pt] (copepod) at (0,0) {
+						% \def\svgwidth{0.3\textwidth}
+						% \input{parts/surf/schemes/physical_interpretation_2.pdf_tex}
+					% };
+				% }
+				% \visible<5>{
+					% \node[inner sep=0pt] (copepod) at (0,0) {
+						% \def\svgwidth{0.3\textwidth}
+						% \input{parts/surf/schemes/physical_interpretation_25.pdf_tex}
+					% };
+				% }
+				% \visible<6->{
+					% \node[inner sep=0pt] (copepod) at (0,0) {
+						% \def\svgwidth{0.3\textwidth}
+						% \input{parts/surf/schemes/physical_interpretation_3.pdf_tex}
+					% };
+				% }
+			% \end{tikzpicture}
+			% \captionsetup{skip=10pt}
+			% \caption{
+				% Illustration of the surfing strategy in a simple vortex flow.
+			% }
+		% \end{figure}
+	% }
+% 
+	% \vskip0pt plus 1filll
+% 
+	% \large
+	% \begin{itemize}
+		% \item<7-> succession of \textbf{``gradient ascents''} controlled by $\TimeHorizon$
+	% \end{itemize}
+	% \vspace{15pt}
+% \end{frame}
+
+% %-------------------------------------------------------
+% % SURFING STRATEGY: Taylor-Green Vortices: Definition
+% %-------------------------------------------------------
+% 
+% \begin{frame}{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Performance - 5 Relevance - 6 Perspectives}
+	% \vspace{5pt}
+	% \centering
+	% \textbf{\Large Taylor-Green Vortices}
+% 
+	% \pause
+	% \begin{equation*}\label{eq:taylor_green_vortex_velocity}
+		% \FlowVelocity(\vec{x}) = \FlowVelocityScalar_{\mathrm{max}}
+		% \begin{pmatrix}
+			% \cos (x/L) \, \sin (y/L) \\
+			% -\sin (x/L) \, \cos (y/L)
+		% \end{pmatrix},
+		% \quad \text{with} \quad
+		% \vec{x} =
+		% \begin{pmatrix}
+			% x \\
+			% y
+		% \end{pmatrix}
+	% \end{equation*}
+% 
+	% \input{parts/surf/plots/tgv.tex}
+% 
+	% \vskip0pt plus 1filll
+	% 
+	% \pause
+	% \large
+	% \begin{itemize}
+		% \item $\FlowVelocityScalar_{\max}$ and $\FlowVorticityScalar_{\max} = 2 \FlowVelocityScalar_{\max} / L$ are used to \textbf{scale} the results
+	% \end{itemize}
+	% \vspace{5pt}
+% \end{frame}

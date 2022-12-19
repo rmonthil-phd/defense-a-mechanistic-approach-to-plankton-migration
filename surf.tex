@@ -1,0 +1,188 @@
+%-------------------------------------------------------
+% FORMULATION: PRESENTATION PLAN
+%-------------------------------------------------------
+
+\begin{frame}{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{15pt}
+	\textbf{\Large Outline}
+
+	\vspace{15pt}
+
+	\large
+	\begin{enumerate}
+		\setlength\itemsep{10pt}
+		\item \textcolor{gray}{\textbf{Introduction} to the world of plankton}
+		\item \textcolor{gray}{Formulation of the \textbf{navigation problem}}
+		\item \textcolor{white}{Solution: The \textbf{surfing} strategy}
+		\item \textcolor{gray}{Evaluation of surfing \textbf{performance}}
+		\item \textcolor{gray}{Biophysical \textbf{relevance} of the strategy}
+		\item \textcolor{gray}{Summary and \textbf{perspectives}}
+	\end{enumerate}
+
+\end{frame}
+
+%-------------------------------------------------------
+% SURFING STRATEGY: DERIVATION
+%-------------------------------------------------------
+
+% \begin{frame}{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Performance - 5 Relevance - 6 Perspectives}
+	% \centering
+	% \vspace{2.5pt}
+% %-------------------------------------------------------
+	% \pause
+	% \begin{equation}
+		% \label{eq:motion}
+		% \text{Motion: } ~~~ \frac{d \ParticlePosition}{dt} = \FlowVelocity (\ParticlePosition, t) + \SwimmingVelocity \, \ControlDirection
+	% \end{equation}
+	% \pause
+	% \begin{equation*}
+		% \label{eq:linear}
+		% \text{Linearization: } ~~~ \FlowVelocity (\vec{x}, \TimeHorizon) \approx \FlowVelocity_0 + (\Gradients)_0 \, \left(\vec{x}  - \ParticlePosition_0 \right) + \, \left(\frac{\partial \FlowVelocity}{\partial t} \right)_0 \left( \TimeHorizon - t_0 \right)
+	% \end{equation*}
+	% \pause
+	% \begin{equation*}
+		% \label{eq:optimal_swimming_direction}
+		% \text{Solution: } ~~~
+		% \boxed{
+			% \ControlDirectionOpt = \frac{\ControlDirectionOptNN}{\norm{\ControlDirectionOptNN}}, \quad \text{with} \quad \ControlDirectionOptNN = \left[ \exp \left( \TimeHorizon \Gradients \right) \right]^T \, \Direction.
+		% }
+	% \end{equation*}
+% 
+	% \pause
+	% \vspace{3pt}
+	% \begin{itemize}
+		% \item $\TimeHorizon$ duration when the linearization starts to break down
+		% \pause
+		% \item $\TimeHorizonOpt$ linked to \textbf{correlation times}
+	% \end{itemize}
+	% \pause
+	% \vspace{3pt}
+	% \begin{equation}
+		% \ControlDirectionOpt \underset{\TimeHorizon \to 0}{\longrightarrow} \Direction \pause = \ControlDirection_{\mathrm{b-h}}
+	% \end{equation}
+% 
+	% \vskip0pt plus 1filll
+% 
+	% \pause
+	% \begin{itemize}
+		% \item $\ControlDirectionOpt (t)$ : local optimum over a time $\TimeHorizon$, \textbf{only free parameter}
+	% \end{itemize}
+	% \vspace{3pt}
+% \end{frame}
+
+\begin{frame}{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Performance - 5 Relevance - 6 Perspectives}
+	\vspace{-20pt}
+	\centering
+	\begin{equation*}
+		\large
+		\text{find} ~ \ControlDirection ~ \text{such that} ~ \ParticlePosition(\FinalTime) \cdot \Direction ~ \text{is maximum}
+	\end{equation*}
+
+	\vspace{-5pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\visible<1-2>{ % small
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.35\textwidth}
+					\input{parts/surf/schemes/navigation_problem_0.pdf_tex}
+				};
+			}
+
+			\visible<3->{ % small
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.35\textwidth}
+					\input{parts/surf/schemes/navigation_problem_1.pdf_tex}
+				};
+			}
+		\end{tikzpicture}
+		% \captionsetup{skip=10pt, margin={0.0\textwidth, 0.0\textwidth}}
+		% \caption{
+			% Navigation problem: maximizing vertical displacement.
+		% }
+	\end{figure}
+	\pause
+	\vspace{0pt}
+	\begin{equation*}
+		\label{eq:motion}
+		\frac{d \ParticlePosition}{dt} = \FlowVelocity (\ParticlePosition, t) + \SwimmingVelocity \, \ControlDirection
+	\end{equation*}
+	\pause
+	\begin{equation*}
+		\label{eq:linear}
+		\FlowVelocity (\vec{x}, t) \approx \FlowVelocity_0 + (\Gradients) \, \vec{x} + \, \left(\frac{\partial \FlowVelocity}{\partial t} \right) t
+	\end{equation*}	
+\end{frame}
+
+\begin{frame}{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Turbulence - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{-15pt}
+	\begin{multline*}
+		\ParticlePosition(\TimeHorizon) \cdot \Direction =
+		\left[ \exp \left[ \TimeHorizon \Gradients \right] - \matr{I} \right] (\Gradients)^{-1} \, \left[ \FlowVelocity \, + (\Gradients)^{-1} \left(\frac{\partial \FlowVelocity}{\partial t} \right) \, \right] \cdot \Direction \\
+		- \, \TimeHorizon (\Gradients)^{-1} \left(\frac{\partial \FlowVelocity}{\partial t} \right) \cdot \Direction
+		+ \, \SwimmingVelocity \int_{0}^{\TimeHorizon} \left( \exp \left[ (\TimeHorizon - t) \Gradients \right] \ControlDirection(t) \right) \cdot \Direction \, dt \,
+	\end{multline*}
+	\vspace{2pt}
+	\pause
+	\begin{equation*}
+		\text{find} ~ \ControlDirection ~ \text{such that} ~ \int_{0}^{\TimeHorizon} \left( \exp \left[ (\TimeHorizon - t) \Gradients \right] \ControlDirection(t) \right) \cdot \Direction \, dt ~ \text{is maximum}
+	\end{equation*}
+	\pause
+	\begin{equation*}
+		\text{find} ~ \ControlDirection ~ \text{such that} ~ \left( \exp \left[ (\TimeHorizon - t) \Gradients \right] \ControlDirection(t) \right) \cdot \Direction ~ \text{is maximum}
+	\end{equation*}
+	\pause
+	\begin{equation*}
+		\text{$t=0$: find} ~ \ControlDirection ~ \text{such that} ~ \left( \exp \left[ \TimeHorizon \Gradients \right] \ControlDirection(t) \right) \cdot \Direction ~ \text{is maximum}
+	\end{equation*}
+	\pause
+	\begin{equation*}
+		\text{find} ~ \ControlDirection ~ \text{such that} ~ \left( \exp \left[ \TimeHorizon (\Gradients)^\top \right] \Direction \right) \cdot \ControlDirection ~ \text{is maximum}
+	\end{equation*}
+	\pause
+	\begin{equation*}
+		\ControlDirectionOpt = \frac{\ControlDirectionOptNN}{\norm{\ControlDirectionOptNN}}, \quad \text{with} \quad \ControlDirectionOptNN = \exp \left[ \TimeHorizon (\Gradients)^\top \right] \, \Direction.
+	\end{equation*}
+\end{frame}
+
+
+\begin{frame}{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Turbulence - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{20pt}
+	\begin{equation*}
+		\label{eq:optimal_swimming_direction}
+		\ControlDirectionOpt = \frac{\ControlDirectionOptNN}{\norm{\ControlDirectionOptNN}}, \quad \text{with} \quad \ControlDirectionOptNN = \exp \left[ \TimeHorizon (\Gradients)^\top \right] \, \Direction.
+	\end{equation*}
+
+	\vskip0pt plus 1filll
+	
+	\begin{itemize}
+		\large
+		\setlength\itemsep{10pt}
+		\item<1-> local optimization over a time horizon $\TimeHorizon$
+		\item<2-> main result of this study
+		\item<3-> $\TimeHorizon$ is the \textbf{only} free parameter
+		\item<4-> \textbf{brute force} approach
+	\end{itemize}
+	\vspace{25pt}
+\end{frame}
+
+% %-------------------------------------------------------
+% % SURFING STRATEGY: Taylor-Green Vortices: Performance
+% %-------------------------------------------------------
+% 
+% \begin{frame}{3 Solution: The \textbf{surfing} strategy}{1 Introduction - 2 Problem - 4 Performance - 5 Relevance - 6 Perspectives}
+	% \vspace{5pt}
+	% \centering
+% 
+	% \input{parts/surf/plots/taylor_green_vortex_tau_performance_vs.tex}
+% 
+	% \vskip0pt plus 1filll
+	% 
+	% %\large
+	% \begin{itemize}
+		% \item<5-> \textbf{surfing is beneficial}, performance decreases with $\SwimmingVelocity / \KolmogorovVelocityScale$
+	% \end{itemize}
+	% \vspace{15pt}
+% \end{frame}

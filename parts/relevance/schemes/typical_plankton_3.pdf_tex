@@ -1,0 +1,77 @@
+%% Creator: Inkscape 1.2.1 (9c6d41e410, 2022-07-14, custom), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'typical_plankton_3.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{279.08894348bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.41885887)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0.11237061,0.05421489){\color[rgb]{1,0.49019608,0.49019608}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\tau_{\mathrm{align, \NameSurfShort}} =$ $0.1$s\end{tabular}}}}%
+    \put(0.11237059,0.00757692){\color[rgb]{0.50196078,0.66666667,1}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\tau_{\mathrm{align, \NameBhShort}} =$ $0.06$s\end{tabular}}}}%
+    \put(0.84714951,0.05421489){\color[rgb]{1,0.49019608,0.49019608}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\tau_{\mathrm{align, \NameSurfShort}} =$ $0.03$s\end{tabular}}}}%
+    \put(0.8471495,0.00757692){\color[rgb]{0.50196078,0.66666667,1}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\tau_{\mathrm{align, \NameBhShort}} =$ $2$s\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{typical_plankton_3.pdf}}%
+    \put(0.45687669,0.22664047){\color[rgb]{1,0.49019608,0.49019608}\rotatebox{48.73803877}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$0.2$ mm\end{tabular}}}}}%
+    \put(0.73100697,0.20991791){\color[rgb]{1,0.49019608,0.49019608}\rotatebox{52.22775324}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$0.03$ mm\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{typical_plankton_3.pdf}}%
+    \put(0.17286999,0.11872886){\color[rgb]{0.50196078,0.66666667,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}copepod\end{tabular}}}}%
+    \put(0.45525602,0.1166844){\color[rgb]{0.50196078,0.66666667,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}larva\end{tabular}}}}%
+    \put(0.65477086,0.11676113){\color[rgb]{0.50196078,0.66666667,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}dinoflagellate\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{typical_plankton_3.pdf}}%
+    \put(0.07428808,0.26834565){\color[rgb]{1,0.49019608,0.49019608}\rotatebox{47.63632397}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$1$ mm\end{tabular}}}}}%
+    \put(0.37074736,0.39444958){\color[rgb]{1,0.49019608,0.49019608}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\SwimmingVelocity =$ $3$ mm.s$^{-1}$\end{tabular}}}}%
+    \put(0.78922678,0.23210511){\color[rgb]{1,0.49019608,0.49019608}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\SwimmingVelocity =$ $0.3$ mm.s$^{-1}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{typical_plankton_3.pdf}}%
+    \put(0.65529727,0.29928389){\color[rgb]{1,0.49019608,0.49019608}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\SwimmingVelocity =$ $2$ mm.s$^{-1}$\end{tabular}}}}%
+    \put(0.49031202,0.05421489){\color[rgb]{1,0.49019608,0.49019608}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\tau_{\mathrm{align, \NameSurfShort}} =$ $0.03$s\end{tabular}}}}%
+    \put(0.490312,0.00757692){\color[rgb]{0.50196078,0.66666667,1}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\tau_{\mathrm{align, \NameBhShort}} =$ $0.3$s\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{typical_plankton_3.pdf}}%
+  \end{picture}%
+\endgroup%

@@ -1,0 +1,239 @@
+%-------------------------------------------------------
+% FORMULATION: PRESENTATION PLAN
+%-------------------------------------------------------
+
+\begin{frame}{2 Formulation of the \textbf{navigation problem}}{1 Introduction - 3 Surfing - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{15pt}
+	\textbf{\Large Outline}
+
+	\vspace{15pt}
+
+	\large
+	\begin{enumerate}
+		\setlength\itemsep{10pt}
+		\item \textcolor{gray}{\textbf{Introduction} to the world of plankton}
+		\item \textcolor{white}{Formulation of the \textbf{navigation problem}}
+		\item \textcolor{gray}{Solution: The \textbf{surfing} strategy}
+		\item \textcolor{gray}{Evaluation of surfing \textbf{performance}}
+		\item \textcolor{gray}{Biophysical \textbf{relevance} of the strategy}
+		\item \textcolor{gray}{Summary and \textbf{perspectives}}
+	\end{enumerate}
+
+\end{frame}
+
+%-------------------------------------------------------
+% FORMULATION: PLANKTER MODEL
+%-------------------------------------------------------
+
+\begin{frame}{2 Formulation of the \textbf{navigation problem}}{1 Introduction - 3 Surfing - 4 Performance - 5 Relevance - 6 Perspectives}
+	% \centering
+	% \vspace{5pt}
+	% \textbf{\Large Plankter model}
+
+	\vspace{-10pt}
+	\begin{figure}
+		\leavevmode\hidewidth\begin{tikzpicture}
+			\visible<1-2>{ % small
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.35\textwidth}
+					\input{parts/formulation/schemes/plankter_model_0.pdf_tex}
+				};
+				\node[ColorBh] (copepod) at (-0.7,-0.7) {
+					$\FlowVelocity(\vec{x}, t)$
+				};
+			}
+			\visible<3>{ % copepod focus
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/formulation/schemes/plankter_model_1.pdf_tex}
+				};
+			}
+			\visible<4>{ % notations
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/formulation/schemes/plankter_model_2.pdf_tex}
+				};
+			}
+			\visible<5>{ % sphere
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/formulation/schemes/plankter_model_4.pdf_tex}
+				};
+			}
+			\visible<6-7>{ % neutrally buoyant
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/formulation/schemes/plankter_model_5.pdf_tex}
+				};
+			}
+			\visible<8>{ % swimming velocity
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/formulation/schemes/plankter_model_6.pdf_tex}
+				};
+			}
+			\visible<9>{ % sensing
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/formulation/schemes/plankter_model_7.pdf_tex}
+				};
+			}
+			\visible<10>{ % preferred direction
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/formulation/schemes/plankter_model_8.pdf_tex}
+				};
+			}
+			\visible<11-12>{ % instantaneous reorientation
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/formulation/schemes/plankter_model_9.pdf_tex}
+				};
+			}
+			\visible<13>{ % memoryless
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/formulation/schemes/plankter_model_10.pdf_tex}
+				};
+			}
+				
+			\node[inner sep=0pt] (copepod) at (6.5,0) {
+				\parbox{0.7\textwidth}{
+					\vspace{10pt}
+					\begin{itemize}
+						\large
+						\setlength\itemsep{5pt}
+						\item<1-> Flow velocity field: \textcolor{ColorBh}{$\FlowVelocity(\vec{x}, t)$}
+						\item<2-> Plankter physical properties
+						\begin{itemize}
+							\normalsize
+							\setlength\itemsep{2pt}
+							\item<2->[$\bullet$] small compared to the smallest flow scale
+							\item<5->[$\bullet$] spherical
+							\item<6->[$\bullet$] neutrally buoyant
+							\item<7->[$\bullet$] inertialess
+						\end{itemize}
+						\item<8-> Active behavior
+						\begin{itemize}
+							\normalsize
+							\setlength\itemsep{2pt}
+							\item<8->[$\bullet$] constant swimming velocity $\SwimmingVelocity$
+							\item<9->[$\bullet$] sensing: \st{$\FlowVelocity(\vec{x}, t)$}, $\Gradients$ and the vertical $\Direction$
+							\item<10->[$\bullet$] preferred direction $\ControlDirection$
+							\item<11->[$\bullet$] instantaneous reorientation
+							\item<13->[$\bullet$] memoryless
+						\end{itemize}
+					\end{itemize}
+				}
+			};
+			\node[opacity=0.0] (copepod) at (10.5,0) {phantom};
+		\end{tikzpicture}\hidewidth\null
+		\captionsetup{skip=-15pt, margin={-0.8\textwidth, 0.0\textwidth}}
+		\caption{
+			Plankter model.
+		}
+	\end{figure}
+
+	% \only<11>{
+		% \vspace{-18pt}
+		% \begin{equation*}
+			% \frac{d \ParticlePosition}{d t} = \FlowVelocity(\ParticlePosition, t) + \SwimmingVelocity \,\SwimmingDirection(t), \quad\quad \SwimmingDirection = \ControlDirection
+		% \end{equation*}
+	% }
+	\only<12->{
+		\vspace{-18pt}
+		\begin{equation*}
+			\frac{d \ParticlePosition}{d t} = \FlowVelocity(\ParticlePosition, t) + \SwimmingVelocity \,\ControlDirection(t)
+		\end{equation*}
+	}
+\end{frame}
+
+\begin{frame}{2 Formulation of the \textbf{navigation problem}}{1 Introduction - 3 Surfing - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{10pt}
+	\textbf{\Large Navigation problem}
+
+	\pause
+	\vspace{-10pt}
+	\begin{equation*}
+		\large
+		\text{find} ~ \ControlDirection ~ \text{such that} ~ \ParticlePosition(\FinalTime) \cdot \Direction ~ \text{is maximum}
+	\end{equation*}
+
+	\vspace{5pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\visible<2->{ % small
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.35\textwidth}
+					\input{parts/formulation/schemes/navigation_problem.pdf_tex}
+				};
+			}
+
+			\visible<3->{ % small
+				\node[inner sep=0pt] (copepod) at (5.5,0) {
+					\large
+					\textbf{Performance:} $\displaystyle \Performance = \frac{\ParticlePosition(T) \cdot \Direction}{T}$
+				};
+			}
+		\end{tikzpicture}
+		\captionsetup{skip=10pt, margin={0.0\textwidth, 0.0\textwidth}}
+		\caption{
+			Navigation problem: maximizing vertical displacement.
+		}
+	\end{figure}
+\end{frame}
+
+% \begin{frame}{2 Formulation of the \textbf{navigation problem}}{1 Introduction - 3 Surfing - 4 Performance - 5 Relevance - 6 Perspectives}
+	% \centering
+	% \vspace{10pt}
+	% \textbf{\Large Navigation baseline}
+% 
+	% \vspace{20pt}
+	% \begin{figure}
+		% \begin{tikzpicture}
+			% \visible<1>{ % plankter
+				% \node[inner sep=0pt] (copepod) at (0,0) {
+					% \def\svgwidth{0.4\textwidth}
+					% \input{parts/formulation/schemes/plankter_bh_0.pdf_tex}
+				% };
+			% }
+			% \visible<2>{ % straight
+				% \node[inner sep=0pt] (copepod) at (0,0) {
+					% \def\svgwidth{0.4\textwidth}
+					% \input{parts/formulation/schemes/plankter_bh_1.pdf_tex}
+				% };
+			% }
+			% \visible<3>{ % reorientation time
+				% \node[inner sep=0pt] (copepod) at (0,0) {
+					% \def\svgwidth{0.4\textwidth}
+					% \input{parts/formulation/schemes/plankter_bh_2.pdf_tex}
+				% };
+			% }
+			% \visible<4->{ % instantaneous reorientation
+				% \node[inner sep=0pt] (copepod) at (0,0) {
+					% \def\svgwidth{0.4\textwidth}
+					% \input{parts/formulation/schemes/plankter_bh_3.pdf_tex}
+				% };
+			% }
+% 
+			% \node[inner sep=0pt] (copepod) at (6.5,0.0) {
+				% \parbox{0.6\textwidth}{
+					% \large
+					% \begin{itemize}
+						% \setlength\itemsep{10pt}
+						% \item<2-> no flow sensing: swim \textbf{straight} upwards
+						% \item<3-> solution: \textbf{bottom-heavyness}
+						% \item<4-> instantaneous reorientation
+					% \end{itemize}
+				% }
+			% };
+			% \node[opacity=0.0] (copepod) at (10.5,0) {phantom};
+		% \end{tikzpicture}
+		% \captionsetup{skip=10pt, margin={0.0\textwidth, 0.5\textwidth}}
+		% \caption{
+			% Illustration of our navigation baseline: the \textbf{bottom-heavy} strategy.
+		% }
+	% \end{figure}
+% \end{frame}

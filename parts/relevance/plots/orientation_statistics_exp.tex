@@ -1,0 +1,120 @@
+\begin{tikzpicture}
+	\begin{groupplot}[
+			group style={
+				group size=2 by 1,
+				horizontal sep=0.14\linewidth,
+			},
+			axis on top,
+			% size
+			width=0.5\textwidth,
+			%ymode=log,
+			% layers
+			set layers ,
+			% legend
+			legend style={draw=none, fill=none, /tikz/every even column/.append style={column sep=4pt}, at={(1.1, 1.05)}, anchor=south},
+			%legend pos=north east,
+			legend cell align=right,
+			legend columns=-1,
+		]
+		% n_{surf, x}
+		\nextgroupplot[
+			% x
+			xlabel=$\FlowVorticityScalar_y \KolmogorovTimeScale$,
+			xmin=-1,
+			xmax=1,
+			% y
+			ylabel=$\langle \SwimmingDirection_{x} \rangle$,
+			ylabel shift = -5pt,
+			ymin=-1,
+			ymax=1,
+			ytick={-1,0,1},
+		]
+			% tau 2.0
+			\addplot[
+				ColorSurf,
+				mark=square*,
+				only marks,
+			] table [
+				x expr={\thisrowno{0}},
+				y expr={\thisrowno{1}},
+				col sep=comma, 
+				comment chars=\#,
+				unbounded coords=discard,
+			] {parts/relevance/data/control_surfers__flow__n_128__re_250/control_surfer__vs_1o0__surftimeconst_2o0__omegamax_1o0__vorticity_z__p_y.csv};
+			\addlegendentry{\NameSurf}
+			% reorientationtime 1.0
+			\addplot[
+				ColorBh,
+				mark=o,
+				only marks,
+			] table [
+				x expr={\thisrowno{0}},
+				y expr={\thisrowno{1}},
+				col sep=comma,
+				comment chars=\#,
+				unbounded coords=discard,
+			] {parts/relevance/data/control_surfers__flow__n_128__re_250/spherical_riser__vs_1o0__reorientationtime_1o0__vorticity_z__p_y.csv};
+			\addlegendentry{\NameBh \quad\quad}
+			% ref
+			\addplot
+	        [
+		        color=white,
+		        opacity=0.5,
+		        solid, 
+		        on layer=axis background,
+		        domain=-1:1,
+		        forget plot,
+	        ]{0};
+	        % exp
+	        \addlegendimage{ColorAlt,mark=asterisk,only marks} \addlegendentry{Data of DiBenedetto et al. (2022)}
+		% n_{surf, x}
+		\nextgroupplot[
+			% x
+			xlabel=$\FlowVorticityScalar_y \KolmogorovTimeScale$,
+			xmin=-1,
+			xmax=1,
+			% y
+			ylabel=$\langle V_{s,x} \rangle / \langle V_{s,z} \rangle$,
+			ylabel shift = -15pt,
+			ymin=-1,
+			ymax=1,
+			ytick={-1,0,1},
+		]
+			% shade
+	        \addplot[name path=A, draw=none, forget plot] table [
+	            x expr={\thisrowno{0} * 0.67},
+	            y expr={\thisrowno{3} / 0.069},
+	            col sep=comma, 
+	            comment chars=\#,
+	        ]{parts/relevance/data/exp/exp_data.csv};
+	        \addplot[name path=B, draw=none, forget plot] table [
+	            x expr={\thisrowno{0} * 0.67},
+	           	y expr={\thisrowno{2} / 0.069},
+	            col sep=comma,
+	            comment chars=\#,
+	        ]{parts/relevance/data/exp/exp_data.csv};
+	        \addplot[ColorAlt, opacity=0.4, forget plot, visible on=<2->] fill between[of=A and B];
+			% tau 1.0
+			\addplot[
+				ColorAlt,
+				mark=asterisk,
+				only marks,
+				visible on=<2->
+			] table [
+				x expr={\thisrowno{0} * 0.67},
+				y expr={\thisrowno{1} / 0.069},
+				col sep=comma, 
+				comment chars=\#,
+				unbounded coords=discard,
+			] {parts/relevance/data/exp/exp_data.csv};
+			% ref
+			\addplot
+	        [
+		        color=white,
+		        opacity=0.5,
+		        solid, 
+		        on layer=axis background,
+		        domain=-1:1,
+	        ]{0};
+	\end{groupplot}
+\end{tikzpicture}

@@ -1,0 +1,323 @@
+%-------------------------------------------------------
+% FORMULATION: PRESENTATION PLAN
+%-------------------------------------------------------
+
+\begin{frame}{5 Biophysical \textbf{relevance} of the strategy}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 6 Perspectives}
+	\centering
+	\vspace{15pt}
+	\textbf{\Large Outline}
+
+	\vspace{15pt}
+
+	\large
+	\begin{enumerate}
+		\setlength\itemsep{10pt}
+		\item \textcolor{gray}{\textbf{Introduction} to the world of plankton}
+		\item \textcolor{gray}{Formulation of the \textbf{navigation problem}}
+		\item \textcolor{gray}{Solution: The \textbf{surfing} strategy}
+		\item \textcolor{gray}{Evaluation of surfing \textbf{performance}}
+		\item \textcolor{white}{Biophysical \textbf{relevance} of the strategy}
+		\item \textcolor{gray}{Summary and \textbf{perspectives}}
+	\end{enumerate}
+
+\end{frame}
+
+%-------------------------------------------------------
+% RELEVANCE: SETUP
+%-------------------------------------------------------
+
+\begin{frame}{5 Biophysical \textbf{relevance} of the strategy}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 6 Perspectives}
+	\centering
+	\vspace{5pt}
+	\textbf{\large How beneficial would the surfing strategy be \\ for actual plankters in their habitat?}
+
+	\pause
+	\vspace{10pt}
+	\begin{itemize}
+		\item Surfing performance is impacted by $\displaystyle \frac{\SwimmingVelocity}{\KolmogorovVelocityScale}$ and $\displaystyle \frac{\tau_{\mathrm{align, \NameSurfShort}}}{\KolmogorovTimeScale}$.
+	\end{itemize}
+
+	\pause
+	\vspace{5pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\visible<3> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.9\textwidth}
+					\input{parts/relevance/schemes/typical_plankton_0.pdf_tex}
+				};
+			}
+			\visible<4> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.9\textwidth}
+					\input{parts/relevance/schemes/typical_plankton_1.pdf_tex}
+				};
+			}
+			\visible<5> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.9\textwidth}
+					\input{parts/relevance/schemes/typical_plankton_2.pdf_tex}
+				};
+			}
+			\visible<6> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.9\textwidth}
+					\input{parts/relevance/schemes/typical_plankton_3.pdf_tex}
+				};
+			}
+		\end{tikzpicture}
+		\captionsetup{skip=5pt, margin={0.0\textwidth, 0.0\textwidth}}
+		\caption{
+			Typical plankter parameters. Size ratios are respected. $\delta = d /200$.
+		}
+	\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+% RELEVANCE: RESULTS
+%-------------------------------------------------------
+
+\begin{frame}{5 Biophysical \textbf{relevance} of the strategy}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 6 Perspectives}
+	\centering
+	\vspace{-5pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\visible<1> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.48\textwidth}
+					\input{parts/relevance/schemes/bio_relevance_0.pdf_tex}
+				};
+			}
+			\visible<2> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.48\textwidth}
+					\input{parts/relevance/schemes/bio_relevance_1.pdf_tex}
+				};
+			}
+			\visible<3> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.48\textwidth}
+					\input{parts/relevance/schemes/bio_relevance_2.pdf_tex}
+				};
+			}
+			\visible<4> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.48\textwidth}
+					\input{parts/relevance/schemes/bio_relevance_3.pdf_tex}
+				};
+			}
+			\visible<5> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.48\textwidth}
+					\input{parts/relevance/schemes/bio_relevance_4.pdf_tex}
+				};
+			}
+		\end{tikzpicture}
+		\captionsetup{skip=20pt}%, margin={0.0\textwidth, 0.0\textwidth}}
+		\caption{
+			Estimation of surfing performance as a function of plankton habitat.
+		}
+	\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+% RELEVANCE: DINSTINGUISH
+%-------------------------------------------------------
+
+\begin{frame}{5 Biophysical \textbf{relevance} of the strategy}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 6 Perspectives}
+	\centering
+	\vspace{5pt}
+	\textbf{\large Surfing would be beneficial for actual plankters. \\ \visible<2->{But are plankters actually surfing?}}
+
+	\vspace{15pt}
+	\begin{columns}[c]
+		\column{.55\textwidth}
+		\centering
+		\begin{itemize}
+			\large
+			\setlength\itemsep{10pt}
+			\item<3-> DiBenedetto et al. (2022)
+			\item<3-> \textit{Crepidula fornicata} larvae
+			\item<4-> migrate upward to \textbf{disperse}
+			\item<5-> migrate downward to \textbf{settle}
+			\item<6-> \textbf{ongoing collaboration} with \\ Michelle DiBenedetto
+		\end{itemize}
+
+		\column{.4\textwidth}
+		\centering
+		\visible<3->{
+			\begin{figure}
+				\def\svgwidth{1.0\textwidth}
+				\input{parts/relevance/schemes/shell.pdf_tex}
+				\caption{
+					Shell of \textit{Crepidula fornicata}.
+				}
+			\end{figure}
+		}
+	\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+% RELEVANCE: EXPERIMENT
+%-------------------------------------------------------
+
+\begin{frame}{5 Biophysical \textbf{relevance} of the strategy}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 6 Perspectives}
+	\centering
+	\vspace{5pt}
+	\textbf{\large Description of the experiment}
+
+	\vspace{0pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\visible<1> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.75\textwidth}
+					\input{parts/relevance/schemes/tank_0.pdf_tex}
+				};
+			}
+			\visible<2> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.75\textwidth}
+					\input{parts/relevance/schemes/tank_1.pdf_tex}
+				};
+			}
+			\visible<3> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.75\textwidth}
+					\input{parts/relevance/schemes/tank_2.pdf_tex}
+				};
+			}
+			\visible<4-> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.75\textwidth}
+					\input{parts/relevance/schemes/tank_3.pdf_tex}
+				};
+			}
+		\end{tikzpicture}
+		\captionsetup{skip=5pt}%, margin={0.0\textwidth, 0.0\textwidth}}
+		\caption{
+			Description of the experiment of DiBenedetto et al. (2022).
+		}
+	\end{figure}
+
+	\vspace{-12pt}
+	\only<5->{
+		\begin{itemize}
+			\item Slip velocity: $\vec{V}_s = (d \ParticlePosition / dt) - \FlowVelocity(\ParticlePosition, t)$ proxy of $\SwimmingVelocity \SwimmingDirection$
+		\end{itemize}
+	}
+\end{frame}
+
+%-------------------------------------------------------
+% RELEVANCE: DISTINGUISH
+%-------------------------------------------------------
+
+\begin{frame}{5 Biophysical \textbf{relevance} of the strategy}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 6 Perspectives}
+	\centering
+	\vspace{5pt}
+	\textbf{\large How to differentiate surfing from bottom-heaviness?}
+	
+	\centering
+	\vspace{10pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\visible<1> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.8\textwidth}
+					\input{parts/relevance/schemes/distinguish_0.pdf_tex}
+				};
+			}
+			\visible<2> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.8\textwidth}
+					\input{parts/relevance/schemes/distinguish_1.pdf_tex}
+				};
+			}
+			\visible<3> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.8\textwidth}
+					\input{parts/relevance/schemes/distinguish_2.pdf_tex}
+				};
+			}
+			\visible<4> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.8\textwidth}
+					\input{parts/relevance/schemes/distinguish_3.pdf_tex}
+				};
+			}
+			\visible<5> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.8\textwidth}
+					\input{parts/relevance/schemes/distinguish_4.pdf_tex}
+				};
+			}
+			\visible<6> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.8\textwidth}
+					\input{parts/relevance/schemes/distinguish_5.pdf_tex}
+				};
+			}
+			\visible<7> {
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.8\textwidth}
+					\input{parts/relevance/schemes/distinguish_6.pdf_tex}
+				};
+			}
+		\end{tikzpicture}
+		\captionsetup{skip=10pt}%, margin={0.0\textwidth, -0.2\textwidth}}
+		\caption{
+			Illustration of how to distinguish surfing from bottom-heaviness.
+		}
+	\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+% RELEVANCE: NUMERICAL AND EXPERIMENTAL RESULTS
+%-------------------------------------------------------
+
+\begin{frame}{5 Biophysical \textbf{relevance} of the strategy}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 6 Perspectives}
+	\centering
+	\vspace{5pt}
+	\textbf{\large Numerical and experimental results}
+
+	\vspace{-5pt}
+	\begin{figure}
+		\input{parts/relevance/plots/orientation_statistics_exp.tex}
+		\captionsetup{skip=0pt}%, margin={0.0\textwidth, 0.0\textwidth}}
+		\caption{
+			Orientation statistics as a function of flow vorticity $\omega_y$ obtained from \textbf{(left)} simulations \textbf{(right)} experiments of DiBenedetto et al. (2022).
+		}
+	\end{figure}
+
+	\vspace{-10pt}
+	\begin{itemize}
+		\item<3-> Might be the \textbf{first observation} of plankter ``surfing'' (\textbf{ongoing})
+	\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+% %-------------------------------------------------------
+% % RELEVANCE: PHOTOTACTIC SURFING
+% %-------------------------------------------------------
+% 
+% \begin{frame}{5 Biophysical \textbf{relevance} of the strategy}{1 Introduction - 2 Problem - 3 Surfing - 4 Performance - 6 Perspectives}
+	% \centering
+	% \vspace{15pt}
+	% \textbf{\large Many plankters are phototactic!}
+% 
+	% \pause
+	% \vspace{30pt}
+	% \def\svgwidth{0.8\textwidth}
+	% \input{parts/relevance/schemes/phototactic_tank.pdf_tex}
+% \end{frame}

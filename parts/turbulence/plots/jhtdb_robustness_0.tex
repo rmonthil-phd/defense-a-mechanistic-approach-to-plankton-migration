@@ -1,0 +1,130 @@
+%\tikzexternalenable
+\begin{tikzpicture}
+    \begin{groupplot}[
+            group style={
+                group size=1 by 1,
+            },
+            % size
+            width=\textwidth,
+            height=\textwidth,
+            % y
+            ylabel={$\left\langle \Performance \right\rangle / \SwimmingVelocity$},
+            y label style={yshift=-4pt},
+            ymin=0.0,
+            ymax=2.5,
+            % x
+            x label style={yshift=4pt},
+            xmin=0.0,
+            % layers
+            set layers,
+            % legend
+            legend columns=3,
+            legend style={draw=none, fill=none},
+            legend cell align=left,
+        ]
+    % partial information
+    \nextgroupplot[
+        axis on top,
+        % size
+        %width=0.32\textwidth,
+        extra y ticks={0.5, 1.5, 2.5},
+        % x
+        xlabel=$\TimeHorizon / \KolmogorovTimeScale$,
+        xmax=30,
+        % legend
+        legend pos = north west,
+        legend style={fill opacity=0.5, text opacity=1},
+    ]
+        %% full
+        \addplot[name path=A, draw=none, forget plot] table [
+            x index=3, 
+            y expr={(\thisrowno{0} - \thisrowno{1}) / (\thisrowno{2} * 0.066)}, %u_\eta = 0.066
+            col sep=comma, 
+            comment chars=\#,
+        ]{data/jhtdb_full/merge_average_velocity_axis_0__agent_full.csv};
+        \addplot[name path=B, draw=none, forget plot] table [
+            x index=3, 
+            y expr={(\thisrowno{0} + \thisrowno{1}) / (\thisrowno{2} * 0.066)}, %u_\eta = 0.066
+            col sep=comma, 
+            comment chars=\#,
+        ]{data/jhtdb_full/merge_average_velocity_axis_0__agent_full.csv};
+        \addplot[ColorSurf, opacity=0.4, forget plot] fill between[of=A and B];
+        %% asym
+        \addplot[name path=A, draw=none, forget plot] table [
+            x index=3, 
+            y expr={(\thisrowno{0} - \thisrowno{1}) / (\thisrowno{2} * 0.066)}, %u_\eta = 0.066
+            col sep=comma, 
+            comment chars=\#,
+        ]{data/jhtdb_asym/merge_average_velocity_axis_0__agent_asym.csv};
+        \addplot[name path=B, draw=none, forget plot] table [
+            x index=3, 
+            y expr={(\thisrowno{0} + \thisrowno{1}) / (\thisrowno{2} * 0.066)}, %u_\eta = 0.066
+            col sep=comma, 
+            comment chars=\#,
+        ]{data/jhtdb_asym/merge_average_velocity_axis_0__agent_asym.csv};
+        \addplot[ColorAsym, opacity=0.4, forget plot] fill between[of=A and B];
+        %% sym
+        \addplot[name path=A, draw=none, forget plot] table [
+            x index=3, 
+            y expr={(\thisrowno{0} - \thisrowno{1}) / (\thisrowno{2} * 0.066)}, %u_\eta = 0.066
+            col sep=comma, 
+            comment chars=\#,
+        ]{data/jhtdb_sym/merge_average_velocity_axis_0__agent_sym.csv};
+        \addplot[name path=B, draw=none, forget plot] table [
+            x index=3, 
+            y expr={(\thisrowno{0} + \thisrowno{1}) / (\thisrowno{2} * 0.066)}, %u_\eta = 0.066
+            col sep=comma,
+            comment chars=\#,
+        ]{data/jhtdb_sym/merge_average_velocity_axis_0__agent_sym.csv};
+        \addplot[ColorSym, opacity=0.4, forget plot] fill between[of=A and B];
+        % full
+        \addplot
+        [
+        color=ColorSurf,
+        opacity=1.0,
+        line width=1pt,
+        only marks,%solid
+        mark=pentagon*
+        ]
+        table[
+            x index=3, 
+            y expr={\thisrowno{0} / (\thisrowno{2} * 0.066)}, %u_\eta = 0.066
+            col sep=comma, 
+            comment chars=\#,
+        ]{data/jhtdb_full/merge_average_velocity_axis_0__agent_full.csv};
+        \addlegendentry{$\Gradients$}
+        % asym
+        \addplot
+        [
+        color=ColorAsym,
+        opacity=1.0,
+        line width=1pt,
+        only marks,%solid
+        mark=triangle
+        ]
+        table[
+            x index=3, 
+            y expr={\thisrowno{0} / (\thisrowno{2} * 0.066)}, %u_\eta = 0.066
+            col sep=comma, 
+            comment chars=\#,
+        ]{data/jhtdb_asym/merge_average_velocity_axis_0__agent_asym.csv};
+        \addlegendentry{$\mathrm{skew} \Gradients$}
+        % sym
+        \addplot
+        [
+        color=ColorSym,
+        opacity=1.0,
+        line width=1pt,
+        only marks,%solid
+        mark=square
+        ]
+        table[
+            x index=3, 
+            y expr={\thisrowno{0} / (\thisrowno{2} * 0.066)}, %u_\eta = 0.066
+            col sep=comma, 
+            comment chars=\#,
+        ]{data/jhtdb_sym/merge_average_velocity_axis_0__agent_sym.csv};
+        \addlegendentry{$\mathrm{sym} \Gradients$}
+    \end{groupplot}
+\end{tikzpicture}
+%\tikzexternaldisable

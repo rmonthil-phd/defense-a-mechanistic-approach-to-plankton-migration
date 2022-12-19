@@ -1,0 +1,400 @@
+% \tikzexternalenable
+\begin{animateinline}[autoplay,loop]{12}
+\multiframe{61}{i=0+1}{%
+\begin{tikzpicture}[
+		arrow/.style={
+			insert path={
+				coordinate[pos=#1,sloped]  (aux-1)
+				coordinate[pos=#1+\pgfkeysvalueof{/tikz/ga/length},sloped] (aux-2)
+				(aux-1) edge[/tikz/ga/arrow] 
+				(aux-2) node[] {\scriptsize #1}
+			}
+		},
+		marrow/.style={
+			insert path={
+				coordinate[pos=#1,sloped]  (aux-1)
+				coordinate[pos=#1-\pgfkeysvalueof{/tikz/ga/length},sloped] (aux-2)
+				(aux-1) edge[/tikz/ga/arrow] 
+				(aux-2) node[] {\scriptsize #1}
+			}
+		},
+		ga/.cd,
+		length/.initial=0.0001,
+		arrow/.style={-stealth,white!50!black,solid},
+		marrow/.style={-stealth,white!50!black,solid},
+		]
+	\FPeval{\j}{min(\i,40)}
+	% plot
+	\begin{axis}[
+		axis line style={black},
+		width=0.85\linewidth,
+		axis equal image,
+		view={0}{90},
+		% x
+		xmin=-4*pi/2,
+		xmax=pi/2,
+		%xlabel=$x$,
+		xticklabel=\empty,
+		% y
+		ymin=-1.0,
+		ymax=10.0,
+		%ylabel=$y$,
+		yticklabel=\empty,
+		% ticks
+		tickwidth=0,
+		% legend
+		legend style={
+			draw=none, 
+			fill=none, 
+			/tikz/every even column/.append style={column sep=4pt}, 
+			at={(0.0, 1.025)}, 
+			anchor=south west
+		},
+   		legend cell align=left,
+   		legend columns=-1,
+	]
+		\only<1->{
+			\addlegendimage{ColorPassive,mark=o,mark options={mark indices={3}}}
+		}
+		\only<2->{
+			\addlegendimage{ColorBh,mark=*,mark options={mark indices={3}}}
+		}
+		\only<3->{
+			\addlegendimage{ColorSurf!00!ColorDuration,mark=pentagon*,mark options={mark indices={3}}}
+		}
+		\only<3->{
+			\addlegendimage{ColorSurf!50!ColorDuration,mark=square*,mark options={mark indices={3}}}
+		}
+		\only<3->{
+			\addlegendimage{ColorSurf!100!ColorDuration,mark=triangle*,mark options={mark indices={3}}}
+		}
+		% flow
+		% \addplot3 [
+			% thick,
+			% domain=-4*pi/2:pi/2,
+			% domain y=-1.0:10.0,
+			% samples=50,
+			% contour gnuplot={levels={-0.8, -0.6, -0.4, -0.2, 0.2, 0.4, 0.6, 0.8}, labels=false, draw color=white!50!black},
+			% forget plot,
+		% ] {cos(deg(x)) * cos(deg(y))};
+		% [arrow/.list={0.3,0.32,0.34,0.46,0.48,0.5,0.52,0.54,0.56,0.58,0.6,0.62,0.64,0.66,0.68,0.7,0.72,0.74,0.76,0.78,0.8,0.82,0.84,0.86,0.88,0.90,0.92,0.94,0.96,0.98,1.0}] [marrow/.list={0.0,0.02,0.04,0.06,0.08,0.1,0.12,0.14,0.16,0.18,0.2,0.22,0.24,0.26,0.28,0.36,0.38,0.4,0.42,0.44}];
+		% passive
+		\only<1->{
+			\addplot[
+				color=ColorPassive,
+				line width=1pt,
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={0}{\j},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_0o78539816_0o______passive_trajectory.csv} node[pos=1, mark size=0.6mm]{\pgfuseplotmark{o}};
+			\addlegendentry{passive}
+		}
+		\only<2->{
+			% bottom-heavy
+		   	\addplot[
+				color=ColorBh,
+				line width=1pt,
+			] table[
+				x index=1, 
+				y index=2, 
+				col sep=comma, 
+				comment chars=\#,
+				select coords between index={0}{\j},
+				unbounded coords=discard,
+	   		]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_0o78539816_0o______bottom_heavy_trajectory.csv} node[pos=1, mark size=0.6mm]{\pgfuseplotmark{*}};
+		   	\addlegendentry{\NameBhShort \quad \NameSurfShort, $\TimeHorizon \FlowVorticityScalar_{\mathrm{max}} =$}
+			\addplot3 [
+				ColorBh,opacity=1.0,
+				very thick,
+				-stealth,
+				quiver={
+					u={\thisrowno{3}},
+					v={\thisrowno{4}},
+					scale arrows=0.8
+				}
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={\j}{\j+1},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_0o78539816_0o______bottom_heavy_trajectory.csv};
+		}
+		\only<3->{
+			% time pi/4
+			\addplot [
+				color=ColorSurf!25!ColorDuration,
+				line width=1pt,
+			] table[
+				x index=1, 
+				y index=2, 
+				col sep=comma, 
+				comment chars=\#,
+				select coords between index={0}{\j},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_0o78539816_0o______surfer__tau_0o7853981633974483_trajectory.csv} node[pos=1, mark size=0.6mm]{\pgfuseplotmark{pentagon*}};
+			\addlegendentry{$\pi/2$}
+			\addplot3 [
+				ColorSurf!25!ColorDuration,
+				opacity=1.0,
+				very thick,
+				-stealth,
+				quiver={
+					u={\thisrowno{3}},
+					v={\thisrowno{4}},
+					scale arrows=0.8
+				}
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={\j}{\j+1},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_0o78539816_0o______surfer__tau_0o7853981633974483_trajectory.csv};
+		}
+		\only<3->{
+			% time pi/2
+			\addplot [
+				color=ColorSurf!66!ColorDuration,
+				line width=1pt,
+			] table[
+				x index=1, 
+				y index=2, 
+				col sep=comma, 
+				comment chars=\#,
+				select coords between index={0}{\j},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_0o78539816_0o______surfer__tau_1o5707963267948966_trajectory.csv} node[pos=1, mark size=0.6mm]{\pgfuseplotmark{square*}};
+			\addlegendentry{$\pi$}
+			\addplot3 [
+				ColorSurf!66!ColorDuration,
+				opacity=1.0,
+				very thick,
+				-stealth,
+				quiver={
+					u={\thisrowno{3}},
+					v={\thisrowno{4}},
+					scale arrows=0.8
+				}
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={\j}{\j+1},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_0o78539816_0o______surfer__tau_1o5707963267948966_trajectory.csv};
+		}
+		\only<3->{
+			% time pi
+			\addplot[
+				color=ColorSurf!100!ColorDuration,
+				line width=1pt,
+			] table [
+				x index=1, 
+				y index=2, 
+				col sep=comma, 
+				comment chars=\#,
+				select coords between index={0}{\j},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_0o78539816_0o______surfer__tau_3o141592653589793_trajectory.csv} node[pos=1, mark size=0.6mm]{\pgfuseplotmark{diamond*}};
+			\addlegendentry{$2\pi$}
+			\addplot3 [
+				ColorSurf!100!ColorDuration,
+				opacity=1.0,
+				very thick,
+				-stealth,
+				quiver={
+					u={\thisrowno{3}},
+					v={\thisrowno{4}},
+					scale arrows=0.8
+				}
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={\j}{\j+1},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_0o78539816_0o______surfer__tau_3o141592653589793_trajectory.csv};
+		}
+		% direction
+		\draw[white,->,-stealth, thick] (axis cs:-pi,2.5) -- (axis cs:-pi,3.8) node [anchor=east, pos=0.5, text opacity=1] {$\Direction$};
+		% start position
+		\addplot[mark=*, mark size=1.2mm] coordinates {(pi/4,0)};
+		% end axis
+	\end{axis}
+
+	% plot
+	\begin{axis}[
+		at={(0.5\linewidth, 0)},
+		axis line style={black},
+		width=0.85\linewidth,
+		axis equal image,
+		view={0}{90},
+		% x
+		xmin=-pi/2,
+		xmax=4*pi/2,
+		%xlabel=$x$,
+		xticklabel=\empty,
+		% y
+		ymin=-1.0,
+		ymax=10.0,
+		%ylabel=$y$,
+		yticklabel=\empty,
+		% ticks
+		tickwidth=0,
+	]
+		\only<4->{
+			% bottom-heavy
+		   	\addplot[
+				color=ColorBh,
+				mark=*,
+				mark options={mark indices={\j}},
+				line width=1pt,
+				mark size=0.6mm
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={0}{\j},
+				unbounded coords=discard,
+		  	]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_-0o78539816_0o______bottom_heavy_trajectory.csv}; % node[pos=0.58, anchor=north, yshift=3pt]{\NameBhShort};
+		  	\addplot3 [
+				ColorBh,opacity=1.0,
+				very thick,
+				-stealth,
+				quiver={
+					u={\thisrowno{3}},
+					v={\thisrowno{4}},
+					scale arrows=0.8
+				}
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={\j}{\j+1},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_-0o78539816_0o______bottom_heavy_trajectory.csv};
+		}
+		\only<4->{
+			% time pi/4
+			\addplot[
+				color=ColorSurf!25!ColorDuration,
+				mark=pentagon*,
+				mark options={mark indices={\j}},
+				line width=1pt,
+				mark size=0.6mm
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={0}{\j},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_-0o78539816_0o______surfer__tau_0o7853981633974483_trajectory.csv}; % node[pos=1, anchor=south, xshift=4pt]{$\scriptstyle\TimeHorizon \FlowVorticityScalar_{\mathrm{max}} = \pi/2$};
+			\addplot3 [
+				ColorSurf!25!ColorDuration,
+				opacity=1.0,
+				very thick,
+				-stealth,
+				quiver={
+					u={\thisrowno{3}},
+					v={\thisrowno{4}},
+					scale arrows=0.8
+				}
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={\j}{\j+1},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_-0o78539816_0o______surfer__tau_0o7853981633974483_trajectory.csv};
+		}
+		\only<4->{
+			% time pi/2
+			\addplot[
+				color=ColorSurf!66!ColorDuration,
+				mark=square*,
+				mark options={mark indices={\j}},
+				line width=1pt,
+				mark size=0.6mm
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={0}{\j},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_-0o78539816_0o______surfer__tau_1o5707963267948966_trajectory.csv}; % node[pos=1, anchor=south west, xshift=-16pt]{$\scriptstyle\TimeHorizon \FlowVorticityScalar_{\mathrm{max}} = \pi$};
+			\addplot3 [
+				ColorSurf!66!ColorDuration,
+				opacity=1.0,
+				very thick,
+				-stealth,
+				quiver={
+					u={\thisrowno{3}},
+					v={\thisrowno{4}},
+					scale arrows=0.8
+				}
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={\j}{\j+1},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_-0o78539816_0o______surfer__tau_1o5707963267948966_trajectory.csv};
+		}
+		\only<4->{
+			% time pi
+			\addplot[
+				color=ColorSurf!100!ColorDuration,
+				mark=triangle*,
+				mark options={mark indices={\j}},
+				line width=1pt,
+				mark size=0.6mm
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={0}{\j},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_-0o78539816_0o______surfer__tau_3o141592653589793_trajectory.csv}; % node[pos=1, anchor=north east]{$\scriptstyle\TimeHorizon \FlowVorticityScalar_{\mathrm{max}} = 2\pi$};
+			\addplot3 [
+				ColorSurf!100!ColorDuration,
+				opacity=1.0,
+				very thick,
+				-stealth,
+				quiver={
+					u={\thisrowno{3}},
+					v={\thisrowno{4}},
+					scale arrows=0.8
+				}
+			] table[
+				x index=1,
+				y index=2,
+				col sep=comma,
+				comment chars=\#,
+				select coords between index={\j}{\j+1},
+				unbounded coords=discard,
+			]{parts/surf/data/flow_taylor_green_vortex__angle_0o0__initial_position_-0o78539816_0o______surfer__tau_3o141592653589793_trajectory.csv};
+		}
+		% start position
+		\addplot[mark=*, mark size=1.2mm] coordinates {(-pi/4,0)};
+		% end axis
+	\end{axis}
+\end{tikzpicture}
+}
+\end{animateinline}
+% \tikzexternaldisable

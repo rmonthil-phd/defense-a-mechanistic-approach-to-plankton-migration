@@ -1,0 +1,305 @@
+%-------------------------------------------------------
+% FORMULATION: PRESENTATION PLAN
+%-------------------------------------------------------
+
+\begin{frame}{4 Evaluation of surfing \textbf{performance}}{1 Introduction - 2 Problem - 3 Surfing - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{15pt}
+	\textbf{\Large Outline}
+
+	\vspace{15pt}
+
+	\large
+	\begin{enumerate}
+		\setlength\itemsep{10pt}
+		\item \textcolor{gray}{\textbf{Introduction} to the world of plankton}
+		\item \textcolor{gray}{Formulation of the \textbf{navigation problem}}
+		\item \textcolor{gray}{Solution: The \textbf{surfing} strategy}
+		\item \textcolor{white}{Evaluation of surfing \textbf{performance}}
+		\item \textcolor{gray}{Biophysical \textbf{relevance} of the strategy}
+		\item \textcolor{gray}{Summary and \textbf{perspectives}}
+	\end{enumerate}
+
+\end{frame}
+
+%-------------------------------------------------------
+% SURFING STRATEGY: Taylor-Green Vortices: Illustration
+%-------------------------------------------------------
+
+\begin{frame}{4 Evaluation of surfing \textbf{performance}}{1 Introduction - 2 Problem - 3 Surfing - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{0pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\node<1>[inner sep=0pt] (copepod) at (0,0) {
+				\input{parts/surf/plots/tgv_trajectories_flow.tex}
+			};
+			\node<2>[inner sep=0pt] (copepod) at (0,0) {
+				\movie[width=0.5328\textwidth, height=0.6\textwidth, autostart, poster, loop]{}{parts/surf/plots/main_bh_low.mp4}
+			};
+			\node<3>[inner sep=0pt] (copepod) at (0,0) {
+				\movie[width=0.5328\textwidth, height=0.6\textwidth, autostart, poster, loop]{}{parts/surf/plots/main_low.mp4}
+			};
+		\end{tikzpicture}
+		\captionsetup{skip=5pt, margin={0.0\textwidth, 0.0\textwidth}}
+		\caption{
+			Illustration of surfing in a 2D Taylor-Green flow.
+		}
+	\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+% TURBULENCE: NUMERICAL SIMULATIONS
+%-------------------------------------------------------
+
+\begin{frame}{4 Evaluation of surfing \textbf{performance}}{1 Introduction - 2 Problem - 3 Surfing - 5 Relevance - 6 Perspectives}
+	\centering
+	\visible<1->{
+		Online open-access simulation: \textbf{Johns Hopkins turbulence database}
+	}
+
+	% $Re_{\lambda} \approx 418$, $L / \eta \approx 710$, $T_L / \tau_\eta \approx 47$, $u_{rms} / u_{\eta} \approx 10$, $t_{max} \approx 5 T_L$
+
+	\vspace{2pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\only<1->{
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					%% \movie[width=0.720\textwidth, height=1.280\textwidth, autostart, poster, loop]{}{parts/turbulence/videos/jhtdb_vertical_velocity.mp4}
+					\movie[width=0.24\textwidth, height=0.43\textwidth, autostart, poster, loop]{}{parts/turbulence/videos/jhtdb_vertical_velocity.mp4}
+				};
+			}
+			\only<2->{
+				\node[inner sep=0pt] (copepod) at (5,0) {
+					\movie[width=0.24\textwidth, height=0.43\textwidth, autostart, poster, loop]{}{parts/turbulence/videos/jhtdb_vorticity.mp4}
+				};
+			}
+			\node[opacity=0.0] (phantom) at (5.7,0) {phantom};
+		\end{tikzpicture}
+		\captionsetup{skip=6pt, margin={0.0\textwidth, 0.0\textwidth}}
+		\caption{
+			\visible<1->{Quasi-stationary \textbf{Homogeneous Isotropic Turbulence} ($Re_{\lambda} \approx 418$). Vertical flow velocity: \textcolor{ColorSurf}{red positive}, \textcolor{ColorBh}{blue negative}.}\only<2->{Vorticity: \textcolor{ColorSurf}{red positive}, \textcolor{ColorBh}{blue negative} and \textcolor{yellow!80!black}{yellow null}.} Rendering by Gudmundur Adalsteinsson.
+		}
+	\end{figure}
+
+	\vspace{-10pt}
+	\begin{itemize}
+		\large
+		\item<3-> Kolmogorov scales: $\eta$, $\tau_\eta$ and $u_{\eta}$ used to \textbf{scale our results}
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+% TURBULENCE: SHELD0N PRINCIPLE
+%-------------------------------------------------------
+
+\begin{frame}{4 Evaluation of surfing \textbf{performance}}{1 Introduction - 2 Problem - 3 Surfing - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{10pt}
+	{\large Trajectory integration: \textbf{Sheld0n} \\ \textit{https://github.com/C0PEP0D/sheld0n}}
+	
+	\vspace{10pt}
+	\leavevmode\hidewidth\begin{figure}
+		\begin{tikzpicture}
+			\visible<1->{
+				\node[inner sep=0pt] (trajs) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/turbulence/schemes/code_0.pdf_tex}
+				};
+			}
+			\visible<2->{
+				\node[inner sep=0pt] (trajs) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/turbulence/schemes/code_1.pdf_tex}
+				};
+			}
+			\visible<3->{
+				\node[inner sep=0pt] (trajs) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/turbulence/schemes/code_2.pdf_tex}
+				};
+			}
+			\visible<4->{
+				\node[inner sep=0pt] (trajs) at (0,0) {
+					\def\svgwidth{0.5\textwidth}
+					\input{parts/turbulence/schemes/code_3.pdf_tex}
+				};
+			}
+			\node[inner sep=0pt] (copepod) at (6,0) {
+				\parbox{0.5\textwidth}{
+					\large
+					\begin{itemize}
+						\setlength\itemsep{5pt}
+						\normalsize
+						\item<1-> open-source solver, modern c++(17), 20000+ lines of code
+						\item<1-> \textbf{fl0p}(interpolated flow), \textbf{fl0w}(flow abstraction), \textbf{l0ad}(vtk/txt/binary loader), \textbf{m0sh}(mesh utility), \textbf{p0l}(Laplace interpolator), ...
+						\item<5-> 4$^{\text{th}}$ order Runge-Kutta
+						\item<6-> own local flow database
+					\end{itemize}
+				}
+			};
+		\end{tikzpicture}
+		\captionsetup{skip=6pt, margin={0.0\textwidth, 0.4\textwidth}}
+		\caption{
+			General principal of the solver.
+		}
+	\end{figure}\hidewidth\null
+\end{frame}
+
+%-------------------------------------------------------
+% TURBULENCE: SHELD0N TRAJECTORIES
+%-------------------------------------------------------
+
+\begin{frame}{4 Evaluation of surfing \textbf{performance}}{1 Introduction - 2 Problem - 3 Surfing - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{5pt}
+	{\large \textbf{Visualisation of trajectories}}
+	
+	\centering
+	\vspace{-25pt}
+	\leavevmode\hidewidth\begin{figure}
+		\begin{tikzpicture}
+			\node<1>[inner sep=0pt] (trajs) at (0,0) {\movie[width=\textwidth, height=0.5\textwidth, autostart, poster, loop]{}{parts/turbulence/videos/trajectories_0.mp4}};
+			\node<2>[inner sep=0pt] (trajs) at (0,0) {\movie[width=\textwidth, height=0.5\textwidth, autostart, poster, loop]{}{parts/turbulence/videos/trajectories_1.mp4}};
+			\node<3->[inner sep=0pt] (trajs) at (0,0) {\movie[width=\textwidth, height=0.5\textwidth, autostart, poster, loop]{}{parts/turbulence/videos/trajectories_2.mp4}};
+			\draw<1->[-stealth] (-5.5,0) -- (-5.5,1) node[midway, anchor=east]{$\Direction$};
+			%\node<2->[opacity=0.0] (copepod) at (9.0,0) {phantom};
+			\node<1->[inner sep=0pt, ColorPassive] (passives) at (-3.5,-3) {passive};
+			\node<2->[inner sep=0pt, ColorBh] (risers) at (0,-3) {bottom-heavy};
+			\node<3->[inner sep=0pt, ColorSurf] (surfers) at (3.5,-3) {surfers ($\TimeHorizon = 2 \KolmogorovTimeScale$)};
+		\end{tikzpicture}
+		\captionsetup{skip=8pt, margin={-0.2\textwidth, -0.2\textwidth}}
+		\caption{
+			Visualisation of trajectories in a turbulent flow ($\mathit{Re}_{\lambda} \approx 11$).
+		}
+	\end{figure}\hidewidth\null
+\end{frame}
+
+%-------------------------------------------------------
+% TURBULENCE: RESULTS
+%-------------------------------------------------------
+
+\begin{frame}{4 Evaluation of surfing \textbf{performance}}{1 Introduction - 2 Problem - 3 Surfing - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{-0pt}
+	\begin{figure}
+		\input{parts/turbulence/plots/jhtdb_more_0.tex}
+		\captionsetup{skip=2pt, margin={0.0\textwidth, -0.0\textwidth}}
+		\caption{
+			Surfing performance in turbulence ($\mathit{Re}_{\lambda} \approx 418$) as a function of the surfing parameter $\TimeHorizon$. Monthiller et al. (2022).
+		}
+	\end{figure}
+
+	\vskip0pt plus 1filll
+
+	\vspace{-5pt}
+	\visible<2->{
+		\begin{itemize}
+			\item Surfing can \textbf{double} migration speed in turbulence!
+		\end{itemize}
+	}
+	\vspace{10pt}
+\end{frame}
+
+\begin{frame}{4 Evaluation of surfing \textbf{performance}}{1 Introduction - 2 Problem - 3 Surfing - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{-10pt}
+	\begin{figure}
+		\input{parts/turbulence/plots/jhtdb_results_1.tex}
+		\captionsetup{skip=2pt, margin={0.0\textwidth, -0.0\textwidth}}
+		\caption{
+			Surfing performance in turbulence ($\mathit{Re}_{\lambda} \approx 418$) as a function of swimming velocity $\SwimmingVelocity / \KolmogorovVelocityScale$. Monthiller et al. (2022).
+		}
+	\end{figure}
+
+	\vspace{-10pt}
+	\visible<2->{
+		\begin{itemize}
+			\item Migration performance decrease with the ratio $\SwimmingVelocity / \KolmogorovVelocityScale$
+		\end{itemize}
+	}
+\end{frame}
+
+%-------------------------------------------------------
+% TURBULENCE: REORIENTATION TIME
+%-------------------------------------------------------
+
+\begin{frame}{4 Evaluation of surfing \textbf{performance}}{1 Introduction - 2 Problem - 3 Surfing - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{5pt}
+	\textbf{\large Robustness: finite-time reorientation}
+	
+	\vspace{10pt}
+	\begin{tikzpicture}
+		\visible<2>{
+			\node[inner sep=0pt] (trajs) at (0,0) {
+				\def\svgwidth{0.75\textwidth}
+				\input{parts/turbulence/schemes/reorientation_time_0.pdf_tex}
+			};
+		}
+		\visible<3>{
+			\node[inner sep=0pt] (trajs) at (0,0) {
+				\def\svgwidth{0.75\textwidth}
+				\input{parts/turbulence/schemes/reorientation_time_1.pdf_tex}
+			};
+		}
+		\visible<4>{
+			\node[inner sep=0pt] (trajs) at (0,0) {
+				\def\svgwidth{0.75\textwidth}
+				\input{parts/turbulence/schemes/reorientation_time_2.pdf_tex}
+			};
+		}
+		\visible<5>{
+			\node[inner sep=0pt] (trajs) at (0,0) {
+				\def\svgwidth{0.75\textwidth}
+				\input{parts/turbulence/schemes/reorientation_time_3.pdf_tex}
+			};
+		}
+		\visible<6>{
+			\node[inner sep=0pt] (trajs) at (0,0) {
+				\def\svgwidth{0.75\textwidth}
+				\input{parts/turbulence/schemes/reorientation_time_4.pdf_tex}
+			};
+		}
+		\visible<7->{
+			\node[inner sep=0pt] (trajs) at (0,0) {
+				\def\svgwidth{0.75\textwidth}
+				\input{parts/turbulence/schemes/reorientation_time_5.pdf_tex}
+			};
+		}
+	\end{tikzpicture}
+
+	\vspace{-0pt}
+	\visible<7->{
+		\begin{equation*}
+			\frac{d \SwimmingDirection}{d t} = \frac{1}{2} \FlowVorticity (\ParticlePosition, t) \times \SwimmingDirection + \frac{1}{2 \ReorientationTime} \left[ \ControlDirection - (\ControlDirection \cdot \SwimmingDirection) \SwimmingDirection \right]
+		\end{equation*}
+
+		\vspace{-10pt}
+		\scriptsize Pedley et al. (1992)
+	}
+\end{frame}
+
+\begin{frame}{4 Evaluation of surfing \textbf{performance}}{1 Introduction - 2 Problem - 3 Surfing - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{5pt}
+	\centering
+	\begin{figure}
+		\input{parts/turbulence/plots/jhtdb_robustness_1.tex}
+		\captionsetup{skip=2pt, margin={0.0\textwidth, -0.0\textwidth}}
+		\caption{
+			Migration performance in turbulence ($\mathit{Re}_{\lambda} \approx 418$) as a function of the reorientation time $\ReorientationTime / \KolmogorovTimeScale$. Monthiller et al. (2022).
+		}
+	\end{figure}
+
+	\vskip0pt plus 1filll
+
+	\vspace{0pt}
+	\visible<2->{
+		\begin{itemize}
+			\large
+			\item Surfing is \textbf{robust} to finite reorientation time.
+		\end{itemize}
+	}
+	\vspace{30pt}
+\end{frame}

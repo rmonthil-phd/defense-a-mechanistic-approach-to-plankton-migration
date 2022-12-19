@@ -1,0 +1,481 @@
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+
+{\1% % this is the name of the PDF file for the background
+\begin{frame}[plain,noframenumbering] % the plain option removes the header from the title page, noframenumbering removes the numbering of this frame only
+  \titlepage % call the title page information from above
+\end{frame}}
+
+%-------------------------------------------------------
+% INTRODUCTION: PRESENTATION PLAN
+%-------------------------------------------------------
+
+\begin{frame}{1 Introduction}{\visible<2->{2 Problem} \visible<3->{- 3 Surfing} \visible<4->{ - 4 Performance} \visible<5->{- 5 Relevance} \visible<6->{ - 6 Perspectives}}
+	\centering
+	\vspace{15pt}
+	\textbf{\Large Outline}
+
+	\vspace{15pt}
+
+	\large
+	\begin{enumerate}
+		\setlength\itemsep{10pt}
+		\item<1-> \textbf{Introduction} to the world of plankton
+		\item<2-> \alt<7->{\textcolor{gray}{Formulation of the \textbf{navigation problem}}}{Formulation of the \textbf{navigation problem}}
+		\item<3-> \alt<7->{\textcolor{gray}{\textbf{Solution}: The \textbf{surfing} strategy}}{Solution: The \textbf{surfing} strategy}
+		\item<4-> \alt<7->{\textcolor{gray}{Evaluation of surfing \textbf{performance}}}{Evaluation of surfing \textbf{performance}}
+		\item<5-> \alt<7->{\textcolor{gray}{Biophysical \textbf{relevance} of the strategy}}{Biophysical \textbf{relevance} of the strategy}
+		\item<6-> \alt<7->{\textcolor{gray}{Summary and \textbf{perspectives}}}{Summary and \textbf{perspectives}}
+	\end{enumerate}
+
+\end{frame}
+
+%-------------------------------------------------------
+% INTRODUCTION: WHAT ARE PLANKTON?
+%-------------------------------------------------------
+
+\begin{frame}{1 Introduction}{2 Problem - 3 Surf - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{4pt}
+	\textbf{\Large What are plankton?}
+
+	\pause
+	\begin{tikzpicture}
+		\node[inner sep=0pt] (copepod) at (0,2.8) {
+			\parbox{1.0\textwidth}{
+				\begin{figure}
+					\centering
+					\def\svgwidth{1.0\textwidth}
+					\input{parts/intro/schemes/plankton_definition.pdf_tex}
+					\captionsetup{skip=5pt}
+					\caption{
+						Plankters are defined as being \textbf{carried} by (ocean) \textbf{currents}.
+					}
+				\end{figure}
+			}
+		};
+		\visible<3->{
+			\node[inner sep=0pt] (copepod) at (0,0) {
+				\parbox{1.0\textwidth}{
+					\begin{figure}
+						\centering
+						\def\svgwidth{1.0\textwidth}
+						\input{parts/intro/schemes/plankton_size.pdf_tex}
+						\captionsetup{skip=20pt}
+						\caption{
+							Illustration a \textbf{plankton size range}.
+						}
+					\end{figure}
+				}
+			};
+			\draw[-stealth, ColorSurf, very thick] (-5.5,-0.6) -- (5.5,-0.6);
+		}
+		\visible<5->{
+			\node[inner sep=0pt] (copepod) at (0,0.6) {
+				\def\svgwidth{1.0\textwidth}
+				\input{parts/intro/schemes/plankton_size_shadow.pdf_tex}
+			};
+			\draw[-stealth, ColorSurf, very thick] (-5.5,-0.6) -- (5.5,-0.6);
+		}
+	\end{tikzpicture}
+
+	\vspace{-10pt}
+		
+	\large
+	\begin{itemize}
+		\item <4-> Many plankters are \textbf{actually able to swim} !
+	\end{itemize}
+\end{frame}
+
+% %-------------------------------------------------------
+% % INTRODUCTION: PLAKNTON SENSING
+% %-------------------------------------------------------
+%
+% \begin{frame}{1 Introduction}{1.2 Plankters can display complex behaviors!}
+	% \centering
+	% \vspace{2pt}
+	% \textbf{\Large Plankter can display complex behaviors!}
+%
+	% \vspace{2pt}
+	% \begin{tikzpicture}
+		% \visible<2->{
+			% \node[inner sep=0pt] (copepod) at (0,0) {
+				% \parbox{0.5\textwidth}{
+					% \begin{figure}
+						% \centering
+						% \def\svgwidth{0.35\textwidth}
+						% \input{parts/intro/schemes/copepod_measure_strain.pdf_tex}
+						% \captionsetup{skip=5pt, width=0.4\textwidth}
+						% \caption{
+							% Simplified illustration of the \textbf{bioligical pump}.
+						% }
+					% \end{figure}
+				% }
+			% };
+		% }
+		% \visible<3->{
+			% \node[inner sep=0pt] (copepod) at (0.5\textwidth,0) {
+				% \parbox{0.5\textwidth}{
+					% \begin{figure}
+						% \centering
+						% \def\svgwidth{0.35\textwidth}
+						% \input{parts/intro/schemes/larval_measure_vorticity.pdf_tex}
+						% \captionsetup{skip=5pt, width=0.4\textwidth}
+						% \caption{
+							% Simplified illustration of the \textbf{bioligical pump}.
+						% }
+					% \end{figure}
+				% }
+			% };
+		% }
+	% \end{tikzpicture}
+%
+	% %\vskip0pt plus 1filll
+%
+	% \large
+	% \begin{itemize}
+		% \item measure the \textbf{gradients} $\Gradients ( \ParticlePosition, t )$, not the velocity $\FlowVelocity (\vec{x}, t)$
+	% \end{itemize}
+	% %\vspace{15pt}
+% \end{frame}
+
+%-------------------------------------------------------
+% INTRODUCTION: WHY ARE PLANKTON IMPORTANT?
+%-------------------------------------------------------
+
+\begin{frame}{1 Introduction}{2 Problem - 3 Surf - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{10pt}
+	\textbf{\Large Why are plankton important?}
+
+	\pause
+	\vspace{10pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\visible<2>{
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.4\textwidth}
+					\input{parts/intro/schemes/plankton_importance_0.pdf_tex}
+				};
+			}
+			\visible<3>{
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.4\textwidth}
+					\input{parts/intro/schemes/plankton_importance_1.pdf_tex}
+				};
+			}
+			% \visible<4>{
+				% \node[inner sep=0pt] (copepod) at (0,0) {
+					% \def\svgwidth{0.4\textwidth}
+					% \input{parts/intro/schemes/plankton_importance_2.pdf_tex}
+				% };
+			% }
+			\visible<4>{
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.4\textwidth}
+					\input{parts/intro/schemes/plankton_importance_3.pdf_tex}
+				};
+			}
+			% \visible<7>{
+				% \node[inner sep=0pt] (copepod) at (0,0) {
+					% \def\svgwidth{0.4\textwidth}
+					% \input{parts/intro/schemes/plankton_importance_4.pdf_tex}
+				% };
+			% }
+			\node[inner sep=0pt] (copepod) at (6,0) {
+				\parbox{0.6\textwidth}{
+					\large
+					\begin{itemize}
+						\setlength\itemsep{20pt}
+						\large
+						\item<2-> \textbf{Marine ecology:} \textbf{basis} of the \textbf{marine food web}
+						\item<4-> \textbf{Climate:} carbon trapping
+					\end{itemize}
+				}
+			};
+		\end{tikzpicture}
+		\captionsetup{skip=7pt, margin={0.0\textwidth, 0.0\textwidth}}
+		\caption{
+			Illustration of the importance of plankton dynamics. \visible<4->{Ducklow et al. (2001).}
+		}
+	\end{figure}
+
+	\vskip0pt plus 1filll
+
+	\large
+	\vspace{15pt}
+\end{frame}
+
+%-------------------------------------------------------
+% INTRODUCTION: WHAT ARE PLANKTON?: NET PLANKTON
+%-------------------------------------------------------
+
+\begin{frame}{1 Introduction}{2 Problem - 3 Surf - 4 Performance - 5 Relevance - 6 Perspectives}
+	\vspace{6pt}
+	\centering
+	\leavevmode\hidewidth\begin{tikzpicture}
+		\node[inner sep=0pt] (copepod) at (0,0) {
+		\parbox{1.0\textwidth}{
+			\begin{figure}
+				\centering
+				\def\svgwidth{0.8\textwidth}
+				\input{parts/intro/images/marine_plankton.pdf_tex}
+				%\captionsetup{skip=5pt, width=0.4\textwidth}
+				\caption{
+					Marine plankters. Adapted from Nadeau et al. \ccbysa ~ v4.0.
+				}
+			\end{figure}
+		}};
+		\visible<4->{
+			\draw[-stealth, ColorSurf, very thick] (-4.7,1.5) -- (-4,1.5) node[pos=0, anchor=east]{\textcolor{ColorSurf}{\small Copepods}};
+			\draw[-stealth, ColorSurf, very thick] (-4.7,1.5) -- (-3.5,0.4);
+			\draw[-stealth, ColorSurf, very thick] (-4.7,1.5) -- (-2.6,2.3);
+		}
+		\visible<3->{
+			\draw[-stealth, ColorSurf, very thick] (4.5,-1.6) -- (4.0,-1.6) node[pos=0, anchor=west]{\textcolor{ColorSurf}{\small Crab larva}};
+		}
+		\visible<2->{
+			\draw[-stealth, ColorSurf, very thick] (4.7,0.85) -- (4.1,0.85) node[pos=0, anchor=west]{\textcolor{ColorSurf}{\small Eggs}};
+			\draw[-stealth, ColorSurf, very thick] (4.7,0.85) -- (4.05,0.25);
+			\draw[-stealth, ColorSurf, very thick] (4.7,0.85) -- (3.4,1.2);
+		}
+		\node[opacity=0.0] (copepod) at (5.0,0) {phantom};
+	\end{tikzpicture}\hidewidth\null
+\end{frame}
+
+%-------------------------------------------------------
+% INTRODUCTION: A COPEPOD, AS AN EXAMPLE OF PLANKTER
+%-------------------------------------------------------
+
+\begin{frame}{1 Introduction}{2 Problem - 3 Surf - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{4pt}
+	\textbf{\Large Copepods: an example of plankton}
+
+	\vspace{0pt}
+	\begin{figure}
+		\leavevmode\hidewidth\begin{tikzpicture}
+			\visible<1>{
+				\node[inner sep=0pt] (copepod) at (0,-1) {
+					\def\svgwidth{0.4\textwidth}
+					\input{parts/intro/schemes/copepod_picture_0.pdf_tex}
+				};
+			}
+			\visible<2-3>{
+				\node[inner sep=0pt] (copepod) at (0,-1) {
+					\def\svgwidth{0.4\textwidth}
+					\input{parts/intro/schemes/copepod_picture_1.pdf_tex}
+				};
+			}
+			\visible<4-5>{
+				\node[inner sep=0pt] (copepod) at (0,-1) {
+					\def\svgwidth{0.4\textwidth}
+					\input{parts/intro/schemes/copepod_picture_2.pdf_tex}
+				};
+			}
+			\only<6->{
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					% \movie[width=0.320\textwidth, height=0.340\textwidth, autostart, loop]{}{parts/intro/videos/copepod_escape.gif}
+					\movie[width=0.480\textwidth, height=0.510\textwidth, autostart, loop]{}{parts/intro/videos/copepod_ambush_attack.mp4}
+				};
+			}
+			\node[inner sep=0pt] (copepod) at (6,0) {
+				\parbox{0.6\textwidth}{
+					\large
+					\begin{itemize}
+						\setlength\itemsep{10pt}
+						\large
+						\item<2-> \textbf{Sensing}
+						\begin{itemize}
+							\setlength\itemsep{2pt}
+							\normalsize
+							\item<3->[$\bullet$] light intensity
+							\item<5->[$\bullet$] local hydrodynamic signals
+						\end{itemize}
+						\item<6-> \textbf{Behavior}
+						\begin{itemize}
+							\setlength\itemsep{2pt}
+							\normalsize
+							\item<6->[$\bullet$] neurons
+							\item<7->[$\bullet$] catch preys and escape predators
+						\end{itemize}
+					\end{itemize}
+				}
+			};
+			\node[opacity=0.0] (copepod) at (9.0,0) {phantom};
+		\end{tikzpicture}\hidewidth\null
+		\captionsetup{skip=6pt, margin={-0.0\textwidth, -0.0\textwidth}}
+		\caption{
+			\alt<6->{\textit{Acartia Tonsa} ambush attack (270 x real time). Adapted from Kiørboe T. et al. (2009).}{\textit{Acartia tonsa}, a calanoid copepod. \copyright Micropolitan.org}
+		}
+	\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+% INTRODUCTION: Vertical migration of plankton
+%-------------------------------------------------------
+
+\begin{frame}{1 Introduction}{2 Problem - 3 Surf - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{5pt}
+	\textbf{\Large Diel vertical migration}
+
+	\pause
+	\vspace{0pt}
+	\begin{figure}
+		\leavevmode\hidewidth\begin{tikzpicture}
+			\visible<2->{
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.35\textwidth}
+					\input{parts/intro/schemes/vertical_migration_0.pdf_tex}
+				};
+				\visible<3->{
+					\node[inner sep=0pt] (copepod) at (0,0) {
+						\def\svgwidth{0.35\textwidth}
+						\input{parts/intro/schemes/vertical_migration_1.pdf_tex}
+					};
+				}
+				\visible<4->{
+					\node[inner sep=0pt] (copepod) at (0,0) {
+						\def\svgwidth{0.35\textwidth}
+						\input{parts/intro/schemes/vertical_migration_2.pdf_tex}
+					};
+				}
+				\visible<6->{
+					\node[inner sep=0pt] (copepod) at (0,0) {
+						\def\svgwidth{0.35\textwidth}
+						\input{parts/intro/schemes/vertical_migration_4.pdf_tex}
+					};
+				}
+				\visible<5->{
+					\node[inner sep=0pt] (copepod) at (0,0) {
+						\def\svgwidth{0.35\textwidth}
+						\input{parts/intro/schemes/vertical_migration_3.pdf_tex}
+					};
+				}
+				%\node[opacity=0.0] (copepod) at (9,0) {phantom};
+			}
+		\end{tikzpicture}\hidewidth\null
+		\captionsetup{skip=5pt, margin={0.0\textwidth, 0.0\textwidth}}
+		\caption{
+			Illustration of plankton \textbf{vertical migrations}. Bandara et al., (2021).
+			}
+	\end{figure}
+
+	\vskip0pt plus 1filll
+
+	\large
+	\begin{itemize}
+		%\setlength\itemsep{10pt}
+		\item<7-> \textbf{Distance:} $\sim$100\unit{\meter} $\gg$ 1\unit{\milli\meter} ~~ $\sim$10 marathons a day!
+		%\item<8-> \textbf{Observation:} Copepods can react to flow sensing!
+		%\item<9-> \textbf{Question:} \textbf{How could \textbf{plankters} use \textbf{hydrodynamic cues}\\ to optimize their \textbf{navigation}?}
+	\end{itemize}
+	\vspace{15pt}
+\end{frame}
+
+
+\begin{frame}{1 Introduction}{2 Problem - 3 Surf - 4 Performance - 5 Relevance - 6 Perspectives}
+	\centering
+	\vspace{0pt}
+	\begin{multicols}{2}
+		\begin{itemize}
+			\large
+			\setlength\itemsep{4pt}
+			\item <1-> diel vertical migration
+			\item <2-> react to the local flow
+		\end{itemize}
+	\end{multicols}
+
+	\vspace{6pt}
+	\begin{figure}
+		\begin{tikzpicture}
+			\visible<3->{
+				\node[inner sep=0pt] (copepod) at (0,0) {
+					\def\svgwidth{0.45\textwidth}
+					\input{parts/intro/schemes/problem.pdf_tex}
+				};
+			}
+		\end{tikzpicture}
+		% \captionsetup{skip=5pt, margin={0.0\textwidth, 0.0\textwidth}}
+		% \caption{
+			% Illustration of problem investigated in this study.
+		% }
+	\end{figure}
+
+	\vskip0pt plus 1filll
+
+	\pause
+	\vspace{-5pt}
+	\visible<3->{
+		\begin{center}
+			\Large
+			How could \textbf{plankters} use their \textbf{flow sensing}\\ to optimize their \textbf{navigation}?
+		\end{center}
+	}
+	\vspace{15pt}
+\end{frame}
+
+%-------------------------------------------------------
+% INTRODUCTION: LITERATURE
+%-------------------------------------------------------
+
+\begin{frame}{1 Introduction}{2 Problem - 3 Surf - 4 Performance - 5 Relevance - 6 Perspectives}
+	\vspace{0pt}
+	\begin{center}
+		\Large
+		How could \textbf{plankters} use their \textbf{flow sensing}\\ to optimize their \textbf{navigation}?
+		\pause
+		\vspace{10pt}
+		\large
+		\begin{itemize}
+			%\item<2-> Zermelo navigation problem or bird soaring problems.
+			%    \begin{itemize}
+			%        \item But at most, planktoners only measure local velocity gradients
+			%    \end{itemize}
+			\item<2-> Plankton observation: data-driven approach
+			\item<3-> Machine learning: reinforcement learning approach
+		\end{itemize}
+	\end{center}
+	
+	\vspace{0pt}
+	\begin{itemize}
+		\item<4-> \textbf{Physics-based} approach: \textbf{approximate analytical solution}.
+	\end{itemize}
+	
+	\vskip0pt plus 1filll
+	\visible<2->{
+		\scriptsize
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item[] Koehl et al., Mar. Ecol. Prog. Ser. (2007)
+				\item[] Michalec et al., Elife (2020)
+				\item[] Montgomery et al., J. Mar. Biolog. Assoc. (2019)
+			\end{itemize}
+		\end{multicols}
+	}
+	\visible<3->{
+		\scriptsize
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item[] Alageshan et al., Phys. Rev. E (2020)
+				\item[] Gustavsson et al., Eur Phys J E (2017)
+				\item[] Cichos et al., Nat. Mach. Intell. (2020)
+				%\item[] Daddi-Moussa-Ider et al., Commun. Phys. (2021)
+				\item[] Gunnarson et al., Nature (2021)
+				\item[] Biferale et al., Chaos (2019)
+				\item[] Reddy et al., PNAS (2016)
+			\end{itemize}
+		\end{multicols}
+	}
+	\visible<4->{
+		\scriptsize
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item[] Bollt et al., J. Fluid Mech. (2021)
+				\item[] Liebchen et al., EPL (2019)
+			\end{itemize}
+		\end{multicols}
+	}
+\end{frame}

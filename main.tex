@@ -1,0 +1,278 @@
+\documentclass[t,10pt,xcolor={dvipsnames, table}]{beamer}
+\usetheme[
+%%% option passed to the outer theme
+%    progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is deault)
+  ]{Feather}
+
+% Colors
+
+\input{colors}  
+
+% Change back color
+\setbeamercolor{background canvas}{bg=black}
+% Change the bar colors:
+\setbeamercolor{Feather}{fg=ColorSurf!30!black,bg=ColorSurf!60!black}
+% Change the color of the structural elements:
+\setbeamercolor{structure}{fg=ColorSurf}
+% Change the frame title text color:
+\setbeamercolor{frametitle}{fg=white!5}
+% Change the normal text colors:
+\setbeamercolor{normal text}{fg=white!75,bg=black}
+% Change the block title colors
+\setbeamercolor{block title}{use=Feather,bg=Feather.fg, fg=white!90} 
+
+
+% Change the logo in the upper right circle:
+\renewcommand{\logofile}{imgs/logo_irphe.png} 
+%% This is an image that comes with the LaTeX installation
+% Adjust scale of the logo w.r.t. the circle; default is 0.875
+\renewcommand{\logoscale}{0.8}
+
+% Change the background image on the title and final page.
+% It stretches to fill the entire frame!
+\renewcommand{\backgroundfile}{imgs/fond_dark.pdf}
+\renewcommand{\backgroundopacity}{0.0}
+
+%-------------------------------------------------------
+% INCLUDE PACKAGES
+%-------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+% \usepackage{helvet}
+\usepackage{multicol}
+
+\usepackage{soul} % st
+\usepackage{cancel}
+
+\usepackage[arrow]{hhtensor} % \matr, \vec
+
+%\usepackage[table]{xcolor}
+
+%-------------------------------------------------------
+% DEFFINING AND REDEFINING COMMANDS
+%-------------------------------------------------------
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{Feather}#2}}
+}
+
+\graphicspath{{schemes/}{parts/intro/images}{parts/intro/schemes}{parts/formulation/schemes}{parts/surf/schemes}{parts/relevance/schemes}{parts/turbulence/schemes}{parts/upscaling}}
+
+%-------------------------------------------------------
+% PRESENTATION SPECIFIC STUFF
+%-------------------------------------------------------
+
+\usepackage{suffix}
+\usepackage{tikz}
+\usetikzlibrary{math}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=./export_figures/]
+\tikzexternaldisable
+\makeatletter
+	\tikzset{% https://tex.stackexchange.com/a/79572/39222
+		beamer externalising/.style={%
+			execute at end picture={%
+				\tikzifexternalizing{%
+					\ifbeamer@anotherslide
+						\pgfexternalstorecommand{\string\global\string\beamer@anotherslidetrue}%
+					\fi
+				}{}%
+			}%
+		},
+		external/optimize=false
+	}
+\makeatother
+%\tikzset{external/force remake}
+\tikzset{
+	invisible/.style={opacity=0},
+	visible on/.style={alt={#1{}{invisible}}},
+	alt/.code args={<#1>#2#3}{%
+		\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+		},
+}
+\usepackage{pgf}
+\usepackage{pgfplots, pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{select coords between index/.style 2 args={
+    x filter/.code={
+        \ifnum\coordindex<#1\def\pgfmathresult{}\fi
+        \ifnum\coordindex>#2\def\pgfmathresult{}\fi
+    }
+}}
+
+\usepackage{multimedia}
+\usepackage{animate}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+\usepackage{siunitx}
+\setbeamertemplate{caption}[numbered]
+\usepackage{ccicons} % creative commons symbols
+\usepackage{caption} % creative commons symbols
+
+\usepackage[nomessages]{fp} % calc
+
+\input{notations}
+
+\usepackage{amsmath}
+\usepackage{multicol}
+
+%-------------------------------------------------------
+% INFORMATION IN THE TITLE PAGE
+%-------------------------------------------------------
+
+%\title[Tracking the source of a passive scalar in turbulence] % [] is optional - is placed on the bottom of the sidebar on every slide
+%{ % is placed on the title page
+%      \textbf{\LARGE Tracking the source of a passive scalar in turbulence}\\
+%}
+
+\title[A mechanistic approach to plankton migration] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+	\vspace{-1.5cm}
+	\textbf{\LARGE A mechanistic approach to\\ plankton migration}
+}
+
+\subtitle[]
+{
+}
+
+\author[Rémi Monthiller]
+{   
+	\vspace{-25pt}
+	\large \textbf{Rémi Monthiller}\\
+	\vspace{5pt}
+	\normalsize Ph.D. supervisors: \textbf{Benjamin Favier and Christophe Eloy}\\
+	%\vspace{20pt}
+	%Aix Marseille Univ, CNRS, Centrale Méditerranée, IRPHE, Marseille, France\\
+	\vspace{20pt}
+	This project has received funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme (grant agreement No 834238).
+	\vspace{20pt}
+}
+
+\institute[IRPHE]
+{%
+}
+
+%\date{}
+\date{\large December 20, 2022}
+%\date{\today}
+
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+%\batchmode
+
+\begin{document}
+
+\input{intro.tex}
+\input{formulation.tex}
+\input{surf.tex}
+\input{turbulence.tex}
+\input{relevance.tex}
+\input{upscaling.tex}
+
+% 
+% % \begin{frame}{Conclusion}
+	% % \vspace{20pt}
+% % %-------------------------------------------------------
+	% % \begin{center}
+		% % \textbf{Surfing} is a \textbf{physics-based strategy} for\\ \textbf{efficient navigation} in \textbf{turbulence}.
+		% % \pause
+		% % \vspace{10pt}
+		% % \begin{itemize}
+			% % \setlength\itemsep{10pt}
+			% % \item<3-> \textbf{Relevant} for real \textbf{planktonic organisms}: $\SwimmingVelocity \lesssim \KolmogorovU$
+			% % \item<4-> \textbf{Comparison} with reinforcement learning in progress.
+				% % \begin{itemize}
+					% % \item<5-> Surfing seems \textbf{competitive}
+				% % \end{itemize}
+			% % \item<6-> Influence of \textbf{physical parameters}: $Re_{\lambda}$ (universality?), predict $\TimeHorizonOpt$ and performance to properties of the flow sampled by active particles
+			% % \item<7-> \textbf{Generalization} of this strategy to \textbf{other navigation problems} (dispersion, point to point navigation, odour tracking ...)
+		% % \end{itemize}
+	% % \end{center}
+	% %
+	% % %\vskip0pt plus 1filll
+	% % %
+	% % %\visible<4->{
+	% % %    \footnotesize Alageshan et al, Phys. Rev. E (2020).
+	% % %}
+	% % %\vspace{10pt}
+% % \end{frame}
+% 
+% \begin{frame}[noframenumbering]{Optimal parameter $\TimeHorizon$}{"Doppler" effect}
+	% \centering
+	% \vspace{20pt}
+% %-------------------------------------------------------
+	% \begin{columns}[c]
+		% \column{.5\textwidth}
+		% \centering
+		% \vspace{10pt}
+		% \input{plots/jhtdb_more_2.tex}
+		% 
+		% \column{.5\textwidth}
+		% \centering
+		% \vspace{7pt}
+		% \input{plots/jhtdb_more_1.tex}
+	% \end{columns}
+% 
+	% \vskip0pt plus 1filll
+	% 
+	% \vspace{-20pt}
+	% \begin{equation*}
+		% \label{eq:corr}
+		% \CorrelationTime (\SwimmingVelocity) = \frac{\int \left\langle I(\omega) \right\rangle \frac{2\pi}{\omega} \, d\omega}{\int \left\langle I(\omega) \right\rangle \, d\omega} ~~ \text{with} ~~ I(\omega) = \sqrt{ \frac{d}{d\omega} \mathrm{tr} ( \Gradients^2 ) }
+	% \end{equation*}
+	% 
+	% \vspace{10pt}
+% \end{frame}
+% 
+% \begin{frame}[noframenumbering]{Comparison to reinforcement learning}{}
+	% \centering
+	% \vspace{10pt}
+% %-------------------------------------------------------
+	% \input{plots/comparison.tex}
+% 
+	% \vskip0pt plus 1filll
+% 
+	% \begin{itemize}
+		% \item Surf: $66\%$, Alageshan et al., Phys. Rev. E (2020): $11\%$
+	% \end{itemize}
+	% \vspace{10pt}
+% \end{frame}
+% 
+% \begin{frame}[noframenumbering]{Partial measure of $\Gradients*$}{Robustness}
+	% \centering
+	% \vspace{30pt}
+% %-------------------------------------------------------
+	% \begin{columns}[c]
+		% \column{.5\textwidth}
+		% \centering
+		% \begin{equation*}
+			% \SwimmingDirectionOpt* = \left[ \exp \left( \TimeHorizon \, \mathrm{sym} \Gradients* \right) \right]^T \, \Direction.
+		% \end{equation*}
+		% \begin{equation*}
+			% \SwimmingDirectionOpt* = \left[ \exp \left( \TimeHorizon \, \mathrm{skew} \Gradients* \right) \right]^T \, \Direction.
+		% \end{equation*}
+% 
+		% \column{.5\textwidth}
+		% \pause
+		% \centering
+		% \input{plots/jhtdb_robustness_0.tex}
+	% \end{columns}
+% 
+	% \vskip0pt plus 1filll
+% 
+	% \begin{itemize}
+		% \item Surfing is robust to partial measure of the gradients.
+	% \end{itemize}
+	% \vspace{10pt}
+% \end{frame}
+
+\end{document}
